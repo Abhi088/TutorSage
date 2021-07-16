@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 
