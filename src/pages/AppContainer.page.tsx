@@ -9,7 +9,7 @@ interface Props { }
 
 const AppContainer: FC<Props> = (props) => {
     return (
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row">
             <Sidebar></Sidebar>
             <Switch>
                 <Route path='/dashboard'>

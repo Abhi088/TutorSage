@@ -12,7 +12,6 @@ const Signup: FC<Props> = (props) => {
                 Already have an account. {" "}
                 <Link to="/login"><span className="underline text-blue-500">Click Here</span></Link>
             </div>
-            <AuthHero></AuthHero>
         </div>
     );
 };

@@ -7,7 +7,7 @@ const Recordings: FC<Props> = (props) => {
     return (
         <div>
             This is Recordings page.
-            <Link to="/login"><span className="underline text-blue-500">Go to Dashboard</span></Link>
+            <Link to="/dashboard"><span className="underline text-blue-500">Go to Dashboard</span></Link>
         </div>
     );
 };
