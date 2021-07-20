@@ -51,7 +51,7 @@ const Signup: FC<Props> = (props) => {
 
     return (
         <div className="w-full font-nunito">
-            <div className="flex flex-col justify-center min-h-screen space-y-16 mx-auto max-w-26rem">
+            <div className="px-10 sm:px-0 flex flex-col justify-center min-h-screen space-y-16 mx-auto max-w-26rem">
                 <div className="space-y-3">
                     <h1 className="text-5xl font-light">Get started with a free account</h1>
                     <h5 className="text-sm font-bold">Already have an account? <LinkTo to="/login" text="Log in" className="border-b border-primary-dark" /></h5>
@@ -112,7 +112,7 @@ const Signup: FC<Props> = (props) => {
                             <label htmlFor="termAgreement">I agree to the <LinkTo to="/termsandconditions" text="terms and conditions" /></label>
                         </div>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex flex-col sm:flex:row space-y-8 sm:space-y-0 justify-between">
                         <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
                             setIsShowPassword(!isShowPassword)
                         }></FormSwitch>
