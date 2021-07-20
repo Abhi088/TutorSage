@@ -19,7 +19,7 @@ const InputField: FC<Props> = ({
     const [isSelected, setIsSelected] = useState(false);
     return (
         <div>
-            <div className="flex">
+            <div className="flex pb-4">
                 {children}
                 <label htmlFor={rest.name}>
                     <input
