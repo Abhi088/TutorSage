@@ -24,6 +24,15 @@ module.exports = {
       },
       boxShadow: {
         DEFAULT: '0 10px 15px -3px rgba(27, 85, 226, 0.23921568627450981), 0 4px 6px -2px #4361ee'
+      },
+      maxWidth: {
+        '26rem': '26rem'
+      },
+      width: {
+        '8.5': '34px'
+      },
+      height: {
+        '4.5': '18px'
       }
     },
   },

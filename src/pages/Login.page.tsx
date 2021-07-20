@@ -46,61 +46,63 @@ const Login: FC<Props> = (props) => {
     const [isShowPassword, setIsShowPassword] = useState(false);
 
     return (
-        <div className="m-auto font-nunito space-y-16">
-            <div className="space-y-3">
-                <h1 className="text-4xl font-normal">Log In to <span className="text-primary-dark font-bold">CODEBITS</span></h1>
-                <h5 className="text-sm font-bold">New Here? <LinkTo to="/signup" text="Create an account" className="border-b border-primary-dark" /></h5>
-            </div>
-            <form onSubmit={handleSubmit} className="space-y-6" method="POST">
-                <div className="space-y-12">
-                    <InputField
-                        {...getFieldProps("email")}
-                        name="email"
-                        type="email"
-                        placeholder="Email"
-                        touched={touched.email}
-                        errorMessage={errors.email}
-                    >
-                        <Icon>
-                            <>
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </>
-                        </Icon>
-                    </InputField>
-                    <InputField
-                        {...getFieldProps("password")}
-                        name="password"
-                        type={isShowPassword ? "text" : "password"}
-                        placeholder="Password"
-                        touched={touched.password}
-                        errorMessage={errors.password}
-                    >
-                        <Icon>
-                            <>
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
-                                </rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4">
-                                </path>
-                            </>
-                        </Icon>
-                    </InputField>
+        <div className="w-full font-nunito">
+            <div className="flex flex-col justify-center min-h-screen space-y-16 mx-auto max-w-26rem">
+                <div className="space-y-3">
+                    <h1 className="text-4xl font-normal">Log In to <span className="text-primary-dark font-bold">CODEBITS</span></h1>
+                    <h5 className="text-sm font-bold">New Here? <LinkTo to="/signup" text="Create an account" className="border-b border-primary-dark" /></h5>
                 </div>
-                <div className="flex justify-between">
-                    <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
-                        setIsShowPassword(!isShowPassword)
-                    }></FormSwitch>
-                    <Button className="px-6 py-2 text-white" text="Log in" submitProgress={isSubmitting} />
-                </div>
-                <div className="flex flex-col text-center space-y-4 pt-8">
-                    <div className="text-secondary-light space-x-3">
-                        <input type="checkbox" name="keepLoggedIn" />
-                        <label htmlFor="keepLoggedIn">Keep me logged in</label>
+                <form onSubmit={handleSubmit} className="space-y-6" method="POST">
+                    <div className="space-y-12">
+                        <InputField
+                            {...getFieldProps("email")}
+                            name="email"
+                            type="email"
+                            placeholder="Email"
+                            touched={touched.email}
+                            errorMessage={errors.email}
+                        >
+                            <Icon className="mr-3">
+                                <>
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </>
+                            </Icon>
+                        </InputField>
+                        <InputField
+                            {...getFieldProps("password")}
+                            name="password"
+                            type={isShowPassword ? "text" : "password"}
+                            placeholder="Password"
+                            touched={touched.password}
+                            errorMessage={errors.password}
+                        >
+                            <Icon className="mr-3">
+                                <>
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
+                                    </rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4">
+                                    </path>
+                                </>
+                            </Icon>
+                        </InputField>
                     </div>
-                    <LinkTo to="/forgot-password" text="Forgot Password?" className="font-bold" />
-                </div>
-            </form>
-            <Copyrights className="font-medium text-sm text-center" />
+                    <div className="flex justify-between">
+                        <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
+                            setIsShowPassword(!isShowPassword)
+                        }></FormSwitch>
+                        <Button className="px-6 py-2 text-white" text="Log in" submitProgress={isSubmitting} />
+                    </div>
+                    <div className="flex flex-col text-center space-y-4 pt-8">
+                        <div className="text-secondary-light space-x-3">
+                            <input type="checkbox" name="keepLoggedIn" />
+                            <label htmlFor="keepLoggedIn">Keep me logged in</label>
+                        </div>
+                        <LinkTo to="/forgot-password" text="Forgot Password?" className="font-bold" />
+                    </div>
+                </form>
+                <Copyrights className="font-medium text-sm text-center" />
+            </div>
         </div>
     );
 };

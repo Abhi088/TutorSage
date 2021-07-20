@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
 import { FC, memo } from 'react';
 
-interface Props { }
+interface Props {
+    className?: string;
+}
 
-const AuthHero: FC<Props> = (props) => {
+const AuthHero: FC<Props> = ({ className }) => {
     console.log("AuthHero rendering");
     useEffect(() => {
         console.log("AuthHero Rendering for the first time");
     }, []);
     return (
-        <div className="h-screen w-1/2 bg-black text-white">Logo will go here</div>
+        <div className={`h-screen w-full bg-black text-white ${className}`}>Logo will go here</div>
     );
 };
 

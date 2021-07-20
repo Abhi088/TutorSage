@@ -21,7 +21,7 @@ const InputField: FC<Props> = ({
         <div>
             <div className="flex pb-4">
                 {children}
-                <label htmlFor={rest.name}>
+                <label htmlFor={rest.name} className="w-full">
                     <input
                         {...rest}
                         onFocus={() => {
@@ -33,7 +33,7 @@ const InputField: FC<Props> = ({
                         type={rest.type}
                         name={rest.name}
                         placeholder={rest.placeholder}
-                        className="outline-none"
+                        className="outline-none w-full"
                     />
                 </label>
             </div>

@@ -16,7 +16,7 @@ const Auth: FC<Props> = (props) => {
                 <SignupPage></SignupPage>
             </Route>
         </Switch>
-        <AuthHero></AuthHero>
+        <AuthHero className="hidden lg:block"></AuthHero>
     </div>)
 };
 
