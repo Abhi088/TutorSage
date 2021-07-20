@@ -23,13 +23,13 @@ const FormSwitch: FC<Props> = ({
                     checked={enabled}
                     onChange={setEnabled}
                     className={`${enabled ? 'bg-blue-600' : 'bg-gray-200'}
-                    relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+                    relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none`}
                 >
                     <span className="sr-only">{forSetting}</span>
                     <span
                         aria-hidden="true"
-                        className={`${enabled ? 'translate-x-6' : 'translate-x-1'}
-                        inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
+                        className={`${enabled ? 'translate-x-6 bg-white' : 'translate-x-1 bg-primary-dark'}
+                        inline-block w-4 h-4 transform rounded-full transition-transform`}
                     />
                 </Switch>
             </div>

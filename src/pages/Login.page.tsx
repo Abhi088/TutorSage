@@ -1,12 +1,13 @@
 import { FC, memo, useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import InputField from '../components/form/InputField';
 import Icon from '../components/form/Icon';
 import { useFormik } from 'formik';
 import * as yup from "yup";
 import Button from '../components/form/Button';
-import { Switch } from '@headlessui/react';
 import FormSwitch from '../components/form/FormSwitch';
+import Copyrights from '../components/Copyrights';
+import LinkTo from '../components/LinkTo';
 
 interface Props { }
 
@@ -48,9 +49,9 @@ const Login: FC<Props> = (props) => {
         <div className="m-auto font-nunito space-y-16">
             <div className="space-y-3">
                 <h1 className="text-4xl font-normal">Log In to <span className="text-primary-dark font-bold">CODEBITS</span></h1>
-                <h5 className="text-sm font-bold">New Here? <Link to="/signup" className="text-primary-dark border-b border-primary-dark">Create an account</Link></h5>
+                <h5 className="text-sm font-bold">New Here? <LinkTo to="/signup" text="Create an account" className="border-b border-primary-dark" /></h5>
             </div>
-            <form onSubmit={handleSubmit} method="POST">
+            <form onSubmit={handleSubmit} className="space-y-6" method="POST">
                 <div className="space-y-12">
                     <InputField
                         {...getFieldProps("email")}
@@ -85,17 +86,21 @@ const Login: FC<Props> = (props) => {
                         </Icon>
                     </InputField>
                 </div>
-                <div>
+                <div className="flex justify-between">
                     <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
                         setIsShowPassword(!isShowPassword)
                     }></FormSwitch>
-                    <Button text="Log in" submitProgress={isSubmitting} />
+                    <Button className="px-6 py-2 text-white" text="Log in" submitProgress={isSubmitting} />
                 </div>
-                <div>
-                    <input type="checkbox" /> Keep me logged in
-                    <Link to="/forgot-password" className="text-primary-dark">Forgot Password?</Link>
+                <div className="flex flex-col text-center space-y-4 pt-8">
+                    <div className="text-secondary-light space-x-3">
+                        <input type="checkbox" name="keepLoggedIn" />
+                        <label htmlFor="keepLoggedIn">Keep me logged in</label>
+                    </div>
+                    <LinkTo to="/forgot-password" text="Forgot Password?" className="font-bold" />
                 </div>
             </form>
+            <Copyrights className="" />
         </div >
     );
 };

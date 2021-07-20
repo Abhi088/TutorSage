@@ -7,6 +7,10 @@ module.exports = {
         primary: {
           dark: "#4361ee",
           light: "rgba(27, 85, 226, 0.23921568627450981)"
+        },
+        secondary: {
+          dark: "#000000",
+          light: "#888ea8"
         }
       },
       fill: theme => ({
