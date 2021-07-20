@@ -100,8 +100,8 @@ const Login: FC<Props> = (props) => {
                     <LinkTo to="/forgot-password" text="Forgot Password?" className="font-bold" />
                 </div>
             </form>
-            <Copyrights className="" />
-        </div >
+            <Copyrights className="font-medium text-sm text-center" />
+        </div>
     );
 };
 

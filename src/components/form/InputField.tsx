@@ -27,6 +27,9 @@ const InputField: FC<Props> = ({
                         onFocus={() => {
                             setIsSelected(true);
                         }}
+                        onBlur={() => {
+                            setIsSelected(false);
+                        }}
                         type={rest.type}
                         name={rest.name}
                         placeholder={rest.placeholder}
