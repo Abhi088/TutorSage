@@ -1,15 +1,19 @@
 import React from 'react';
 import { FC, memo, useState } from 'react';
-import Icon from '../form/Icon';
+import { IoWarningOutline } from 'react-icons/io5';
 
 interface Props extends React.HTMLProps<HTMLInputElement> {
     children?: React.ReactElement;
     className?: string;
+    touched?: boolean;
+    errorMessage?: string;
 }
 
 const InputField: FC<Props> = ({
     children,
     className,
+    errorMessage,
+    touched,
     ...rest
 }) => {
     const [isSelected, setIsSelected] = useState(false);
@@ -26,10 +30,16 @@ const InputField: FC<Props> = ({
                         type={rest.type}
                         name={rest.name}
                         placeholder={rest.placeholder}
+                        className="outline-none"
                     />
                 </label>
             </div>
             <hr className={"w-full " + (isSelected ? "border-primary-dark" : "border-gray-200")} />
+            {touched && (
+                <div className="flex text-red-800">
+                    {errorMessage}
+                </div>
+            )}
         </div>
     );
 };

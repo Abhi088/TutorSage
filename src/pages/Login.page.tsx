@@ -1,17 +1,60 @@
-import { FC, memo } from 'react';
-import { Link } from 'react-router-dom';
+import { FC, memo, useState } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import InputField from '../components/form/InputField';
 import Icon from '../components/form/Icon';
+import { useFormik } from 'formik';
+import * as yup from "yup";
+import Button from '../components/form/Button';
 
 interface Props { }
 
 const Login: FC<Props> = (props) => {
+
+    const redirectHistory = useHistory();
+
+    const { handleSubmit, errors, touched, isSubmitting, getFieldProps } =
+        useFormik({
+            initialValues: {
+                email: "",
+                password: ""
+            },
+            validationSchema: yup.object().shape({
+                email: yup
+                    .string()
+                    .email(() => "Email is invalid")
+                    .required("Email is required field!"),
+                password: yup
+                    .string()
+                    .required("Cannot login without a password")
+                    .matches(
+                        /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+                        "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+                    )
+            }),
+            onSubmit: (data, { setSubmitting }) => {
+                setTimeout(() => {
+                    console.log(data);
+                    setSubmitting(false);
+                    redirectHistory.push("/dashboard");
+                }, 3000);
+            }
+        });
+
+    const [isShowPassword, setIsShowPassword] = useState(false);
+
     return (
         <div>
-            <h1>Log In to CORK</h1>
-            <h5>New Here? <Link to="/signup">Create an account</Link></h5>
-            <form>
-                <InputField name="email" type="email" placeholder="Email" required>
+            <h1>Log In to CODEBITS</h1>
+            <h5>New Here? <Link to="/signup" className="text-primary-dark">Create an account</Link></h5>
+            <form onSubmit={handleSubmit} method="POST">
+                <InputField
+                    {...getFieldProps("email")}
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    touched={touched.email}
+                    errorMessage={errors.email}
+                >
                     <Icon>
                         <>
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -19,7 +62,14 @@ const Login: FC<Props> = (props) => {
                         </>
                     </Icon>
                 </InputField>
-                <InputField name="password" type="password" placeholder="Password" required>
+                <InputField
+                    {...getFieldProps("password")}
+                    name="password"
+                    type={isShowPassword ? "text" : "password"}
+                    placeholder="Password"
+                    touched={touched.password}
+                    errorMessage={errors.password}
+                >
                     <Icon>
                         <>
                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
@@ -29,11 +79,9 @@ const Login: FC<Props> = (props) => {
                         </>
                     </Icon>
                 </InputField>
-                <label htmlFor="showPassword">Show Password</label>
-                <input type="checkbox" name="showPassword" />
-                <button type="submit">Log In</button>
+                <Button text="Log in" submitProgress={isSubmitting} />
             </form>
-            <Link to="/forgot-password">Forgot Password?</Link>
+            <Link to="/forgot-password" className="text-primary-dark">Forgot Password?</Link>
         </div >
     );
 };
