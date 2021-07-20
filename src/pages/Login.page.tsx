@@ -45,7 +45,7 @@ const Login: FC<Props> = (props) => {
     const [isShowPassword, setIsShowPassword] = useState(false);
 
     return (
-        <div className="w-full font-nunito">
+        <div className="px-10 mobile:px-0 m-auto w-full font-nunito">
             <div className="flex flex-col justify-center min-h-screen space-y-16 mx-auto max-w-26rem">
                 <div className="space-y-3">
                     <h1 className="text-4xl font-normal">Log In to <span className="text-primary-dark font-bold">CODEBITS</span></h1>
@@ -86,7 +86,7 @@ const Login: FC<Props> = (props) => {
                             </Icon>
                         </InputField>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex flex-col mobile:flex-row space-y-8 mobile:space-y-0 justify-between">
                         <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
                             setIsShowPassword(!isShowPassword)
                         }></FormSwitch>

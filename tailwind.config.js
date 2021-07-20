@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      screens: {
+        'mobile': '490px',
+      },
       colors: {
         primary: {
           dark: "#4361ee",
