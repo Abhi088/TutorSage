@@ -1,13 +1,13 @@
 import { FC, memo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import InputField from '../components/form/InputField';
-import Icon from '../components/form/Icon';
 import { useFormik } from 'formik';
 import * as yup from "yup";
-import Button from '../components/form/Button';
-import FormSwitch from '../components/form/FormSwitch';
 import Copyrights from '../components/Copyrights';
 import LinkTo from '../components/LinkTo';
+import InputField from '../components/form/InputField';
+import Icon from '../components/form/Icon';
+import Button from '../components/form/Button';
+import FormSwitch from '../components/form/FormSwitch';
 
 interface Props { }
 

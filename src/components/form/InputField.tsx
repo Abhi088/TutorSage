@@ -1,6 +1,5 @@
 import React from 'react';
 import { FC, memo, useState } from 'react';
-import { IoWarningOutline } from 'react-icons/io5';
 
 interface Props extends React.HTMLProps<HTMLInputElement> {
     children?: React.ReactElement;
