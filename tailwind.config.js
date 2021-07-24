@@ -8,8 +8,8 @@ module.exports = {
       },
       colors: {
         primary: {
-          dark: "#4361ee",
-          light: "rgba(27, 85, 226, 0.23921568627450981)"
+          dark: "#1e3b8a",
+          light: "#4361ee"
         },
         secondary: {
           dark: "#000000",

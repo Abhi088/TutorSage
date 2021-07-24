@@ -42,9 +42,9 @@ const Button: React.FC<Props> = ({
         }
     } else {
         if (buttonStyle === "solid") {
-            buttonClasses += (buttonDisabled ? "bg-blue-900" : "bg-primary-dark shadow-primary hover:shadow-none") + " text-white ";
+            buttonClasses += (buttonDisabled ? "bg-primary-dark" : "bg-primary-light shadow-primary hover:shadow-none") + " text-white ";
         } else {
-            buttonClasses += (buttonDisabled ? "border-2 border-blue-900 text-blue-900" : "border-2 border-primary-dark hover:bg-primary-dark text-primary-dark hover:text-white hover:shadow-primary");
+            buttonClasses += (buttonDisabled ? "border-2 border-primary-dark text-primary-dark" : "border-2 border-primary-light hover:bg-primary-light text-primary-light hover:text-white hover:shadow-primary");
         }
     }
 
