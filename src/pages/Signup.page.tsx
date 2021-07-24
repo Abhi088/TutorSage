@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as yup from "yup";
 import Copyrights from '../components/Copyrights';
 import LinkTo from '../components/LinkTo';
-import InputField from '../components/form/InputField';
+import InputField from '../components/InputField/InputField';
 import Icon from '../components/form/Icon';
 import Button from '../components/Button/Button';
 import FormSwitch from '../components/form/FormSwitch';
