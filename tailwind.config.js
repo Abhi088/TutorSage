@@ -14,6 +14,14 @@ module.exports = {
         secondary: {
           dark: "#000000",
           light: "#888ea8"
+        },
+        success: {
+          dark: "#046304",
+          light: "#1abc9c"
+        },
+        danger: {
+          dark: "#87100c",
+          light: "#e7515a"
         }
       },
       fill: theme => ({
@@ -29,7 +37,9 @@ module.exports = {
         '3': '3px'
       },
       boxShadow: {
-        DEFAULT: '0 10px 15px -3px rgba(27, 85, 226, 0.23921568627450981), 0 4px 6px -2px #4361ee'
+        primary: '0 10px 20px -10px #4361ee',
+        success: '0 10px 20px -10px #046304',
+        danger: '0 10px 20px -10px #87100c'
       },
       maxWidth: {
         '26rem': '26rem'

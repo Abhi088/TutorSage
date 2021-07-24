@@ -6,7 +6,7 @@ import Copyrights from '../components/Copyrights';
 import LinkTo from '../components/LinkTo';
 import InputField from '../components/form/InputField';
 import Icon from '../components/form/Icon';
-import Button from '../components/form/Button';
+import Button from '../components/Button/Button';
 import FormSwitch from '../components/form/FormSwitch';
 
 interface Props { }
@@ -116,7 +116,7 @@ const Signup: FC<Props> = (props) => {
                         <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
                             setIsShowPassword(!isShowPassword)
                         }></FormSwitch>
-                        <Button className="px-6 py-2 text-white" text="Get Started!" submitProgress={isSubmitting} />
+                        <Button className="px-6 py-2 text-white" text="Get Started!" buttonDisabled={isSubmitting} />
                     </div>
                 </form>
                 <Copyrights className="font-medium text-sm text-center" />
