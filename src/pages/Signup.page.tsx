@@ -116,7 +116,7 @@ const Signup: FC<Props> = (props) => {
                         <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
                             setIsShowPassword(!isShowPassword)
                         }></FormSwitch>
-                        <Button className="px-6 py-2 text-white" text="Get Started!" buttonDisabled={isSubmitting} />
+                        <Button buttonSize="small" text="Get Started!" buttonDisabled={isSubmitting} />
                     </div>
                 </form>
                 <Copyrights className="font-medium text-sm text-center" />
