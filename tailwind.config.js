@@ -25,6 +25,9 @@ module.exports = {
       borderRadius: {
         '4px': '0.25rem'
       },
+      borderWidth: {
+        '3': '3px'
+      },
       boxShadow: {
         DEFAULT: '0 10px 15px -3px rgba(27, 85, 226, 0.23921568627450981), 0 4px 6px -2px #4361ee'
       },
@@ -32,10 +35,12 @@ module.exports = {
         '26rem': '26rem'
       },
       width: {
-        '8.5': '34px'
+        '8.5': '34px',
+        '14': '56px'
       },
       height: {
-        '4.5': '18px'
+        '4.5': '18px',
+        '14': '56px'
       }
     },
   },
