@@ -26,8 +26,8 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook": "start-storybook -p 6006 -s storybook",
+    "build-storybook": "build-storybook -s storybook"
   },
   "eslintConfig": {
     "extends": [
