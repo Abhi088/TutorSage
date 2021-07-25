@@ -7,7 +7,7 @@ import LinkTo from '../components/LinkTo';
 import InputField from '../components/InputField/InputField';
 import Icon from '../components/Icons/Icons';
 import Button from '../components/Button/Button';
-import FormSwitch from '../components/form/FormSwitch';
+import FormSwitch from '../components/FormSwitch';
 
 interface Props { }
 
