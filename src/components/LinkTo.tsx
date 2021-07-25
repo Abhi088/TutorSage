@@ -9,7 +9,7 @@ interface Props {
 
 const LinkTo: FC<Props> = ({ to, className, text }) => {
     return (
-        <Link to={to} className={`text-primary-dark ${className}`}>{text}</Link>
+        <Link to={to} className={`text-primary-medium ${className}`}>{text}</Link>
     );
 };
 

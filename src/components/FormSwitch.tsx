@@ -28,7 +28,7 @@ const FormSwitch: FC<Props> = ({
                     <span className="sr-only">{forSetting}</span>
                     <span
                         aria-hidden="true"
-                        className={`${enabled ? 'translate-x-4 bg-white' : 'translate-x-0 bg-primary-dark'}
+                        className={`${enabled ? 'translate-x-4 bg-white' : 'translate-x-0 bg-primary-medium'}
                         inline-block w-4 h-4 transform rounded-full transition-transform duration-500`}
                     />
                 </Switch>

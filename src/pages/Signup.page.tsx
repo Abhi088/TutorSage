@@ -54,7 +54,7 @@ const Signup: FC<Props> = (props) => {
             <div className="px-10 sm:px-0 flex flex-col justify-center min-h-screen space-y-16 mx-auto max-w-26rem">
                 <div className="space-y-3">
                     <h1 className="text-5xl font-light">Get started with a free account</h1>
-                    <h5 className="text-sm font-bold">Already have an account? <LinkTo to="/login" text="Log in" className="border-b border-primary-dark" /></h5>
+                    <h5 className="text-sm font-bold">Already have an account? <LinkTo to="/login" text="Log in" className="border-b border-primary-medium" /></h5>
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-6" method="POST">
                     <div className="space-y-12">

@@ -6,7 +6,7 @@ import StackedAvatars from './StackedAvatars';
 import '../../index.css';
 
 export const StackedAvatar = (args: any) => (
-    <StackedAvatars avatarsSrc={args.avatarsSrc} size={args.size}></StackedAvatars>
+    <StackedAvatars {...args}></StackedAvatars>
 );
 
 export default {

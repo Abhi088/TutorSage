@@ -6,7 +6,7 @@ import Avatar from './Avatar';
 import '../../index.css';
 
 export const Avatars = (args: any) => (
-    <Avatar avatarSize={args.avatarSize} imgSrc={args.imgSrc} shape={args.shape} showStatus={args.showStatus} onlineStatus={args.onlineStatus}></Avatar>
+    <Avatar {...args}></Avatar>
 );
 
 export default {
@@ -17,6 +17,8 @@ export default {
         imgSrc: "https://designreset.com/cork/ltr/demo4/assets/img/profile-12.jpeg",
         shape: "square",
         showStatus: true,
-        onlineStatus: true
+        onlineStatus: true,
+        imgClass: "",
+        className: ""
     }
 } as Meta;

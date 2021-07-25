@@ -6,7 +6,7 @@ import ProgressBar from './ProgressBar';
 import '../../index.css';
 
 export const ProgressBars = (args: any) => (
-    <ProgressBar progress={args.progress} progressType={args.progressType}></ProgressBar>
+    <ProgressBar {...args}></ProgressBar>
 );
 
 export default {

@@ -48,8 +48,8 @@ const Login: FC<Props> = (props) => {
         <div className="w-full font-nunito">
             <div className="px-10 sm:px-0 flex flex-col justify-center min-h-screen space-y-16 mx-auto max-w-26rem">
                 <div className="space-y-3">
-                    <h1 className="text-4xl font-normal">Log In to <span className="text-primary-dark font-bold">CODEBITS</span></h1>
-                    <h5 className="text-sm font-bold">New Here? <LinkTo to="/signup" text="Create an account" className="border-b border-primary-dark" /></h5>
+                    <h1 className="text-4xl font-normal">Log In to <span className="text-primary-medium font-bold">CODEBITS</span></h1>
+                    <h5 className="text-sm font-bold">New Here? <LinkTo to="/signup" text="Create an account" className="border-b border-primary-medium" /></h5>
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-6" method="POST">
                     <div className="space-y-12">
