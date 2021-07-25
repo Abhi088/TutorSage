@@ -10,7 +10,7 @@ export const StackedAvatar = (args: any) => (
 );
 
 export default {
-    title: 'Components/StackedAvatar',
+    title: 'Components/Stacked Avatar',
     component: StackedAvatars,
     args: {
         avatarsSrc: [

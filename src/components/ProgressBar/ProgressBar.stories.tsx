@@ -5,12 +5,12 @@ import { Meta } from '@storybook/react';
 import ProgressBar from './ProgressBar';
 import '../../index.css';
 
-export const Progress = (args: any) => (
+export const ProgressBars = (args: any) => (
     <ProgressBar progress={args.progress} progressType={args.progressType}></ProgressBar>
 );
 
 export default {
-    title: 'Components/Progress',
+    title: 'Components/Progress Bars',
     component: ProgressBar,
     args: {
         progress: 30,
