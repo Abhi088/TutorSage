@@ -1,4 +1,4 @@
-import React, { ReactChild, ReactChildren } from "react";
+import React from "react";
 
 interface Props extends React.HTMLProps<HTMLButtonElement> {
     children: React.ReactElement;

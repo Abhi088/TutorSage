@@ -6,7 +6,7 @@ import Button from './Button';
 import '../../index.css';
 
 export const Buttons = (args: any) => (
-    <Button buttonDisabled={args.buttonDisabled} text={args.text} buttonSize={args.buttonSize} buttonType={args.buttonType} buttonStyle={args.buttonStyle} className={args.className}></Button>
+    <Button {...args}></Button>
 );
 
 export default {
@@ -17,7 +17,7 @@ export default {
         text: "Click Me!",
         buttonSize: "small",
         buttonType: "primary",
-        buttonStyle: "outline",
+        buttonStyle: "solid",
         className: ""
     }
 } as Meta;
