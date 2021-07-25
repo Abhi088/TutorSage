@@ -58,6 +58,7 @@ const Avatar: React.FC<Props> = ({
 
 Avatar.defaultProps = {
     avatarSize: "small",
+    showStatus: true,
     onlineStatus: false,
     shape: "circular"
 };
