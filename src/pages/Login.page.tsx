@@ -5,7 +5,7 @@ import * as yup from "yup";
 import Copyrights from '../components/Copyrights';
 import LinkTo from '../components/LinkTo';
 import InputField from '../components/InputField/InputField';
-import Icon from '../components/form/Icon';
+import Icon from '../components/Icons/Icons';
 import Button from '../components/Button/Button';
 import FormSwitch from '../components/form/FormSwitch';
 
@@ -61,12 +61,7 @@ const Login: FC<Props> = (props) => {
                             touched={touched.username}
                             errorMessage={errors.username}
                         >
-                            <Icon className="mr-3">
-                                <>
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </>
-                            </Icon>
+                            <Icon className="mr-3" name="username"></Icon>
                         </InputField>
                         <InputField
                             {...getFieldProps("password")}
@@ -76,14 +71,7 @@ const Login: FC<Props> = (props) => {
                             touched={touched.password}
                             errorMessage={errors.password}
                         >
-                            <Icon className="mr-3">
-                                <>
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
-                                    </rect>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4">
-                                    </path>
-                                </>
-                            </Icon>
+                            <Icon className="mr-3" name="password"></Icon>
                         </InputField>
                     </div>
                     <div className="flex flex-col sm:flex-row space-y-8 sm:space-y-0 justify-between">
