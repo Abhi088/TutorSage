@@ -40,7 +40,8 @@ module.exports = {
       boxShadow: {
         primary: '0 10px 20px -10px #4361ee',
         success: '0 10px 20px -10px #046304',
-        danger: '0 10px 20px -10px #87100c'
+        danger: '0 10px 20px -10px #87100c',
+        gray: '5px 5px 10px gray'
       },
       maxWidth: {
         '26rem': '26rem'
@@ -52,6 +53,9 @@ module.exports = {
       height: {
         '4.5': '18px',
         '14': '56px'
+      },
+      fontSize: {
+        '2xs': '0.5rem'
       }
     },
   },

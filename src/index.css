@@ -5,3 +5,8 @@
 .font-nunito {
     font-family: 'Nunito', sans-serif;
 }
+
+.hover\:translate-avatar :hover{
+    transform: translateY(-7px) scale(1.02);
+    transition: all 0.35s ease;
+}
