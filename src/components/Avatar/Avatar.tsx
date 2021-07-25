@@ -2,6 +2,7 @@ import React from "react";
 
 interface Props extends React.HTMLProps<HTMLButtonElement> {
     avatarSize?: "large" | "medium" | "small";
+    showStatus?: boolean;
     onlineStatus?: boolean;
     imgSrc: string;
     shape?: "circular" | "square";
@@ -9,6 +10,7 @@ interface Props extends React.HTMLProps<HTMLButtonElement> {
 
 const Avatar: React.FC<Props> = ({
     avatarSize,
+    showStatus,
     onlineStatus,
     imgSrc,
     shape
@@ -49,7 +51,7 @@ const Avatar: React.FC<Props> = ({
     return (
         <div className={`${avatarClass} `}>
             <img src={imgSrc} alt="avatar" className={`${avatarClass} `} />
-            <div className={`rounded-full ${(onlineStatus ? 'bg-green-400' : 'bg-gray-800')} ${statusClass} relative  border-white`}></div>
+            <div className={`${(showStatus ? 'block' : 'hidden')} rounded-full ${(onlineStatus ? 'bg-green-400' : 'bg-gray-800')} ${statusClass} relative  border-white`}></div>
         </div>
     );
 };

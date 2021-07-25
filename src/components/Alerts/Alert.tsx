@@ -25,7 +25,7 @@ const Alert: React.FC<Props> = ({
         buttonClass = " hover:text-red-500";
     }
     else {
-        alertClass += " bg-primary-light text-primary-dark";
+        alertClass += " bg-primary-light text-primary-dark ";
         buttonClass = "hover:text-blue-700";
     }
 

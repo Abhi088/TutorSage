@@ -16,7 +16,7 @@ const ProgressBar: React.FC<Props> = ({
     } else if (progressType === "danger") {
         progressBarClass += "bg-danger-light ";
     } else {
-        progressBarClass += "bg-primary-light ";
+        progressBarClass += "bg-primary-medium ";
     }
 
     return (
