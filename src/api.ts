@@ -227,6 +227,6 @@ export const fetchGroups = async (data: GroupRequest) => {
 
     return await axios
         .get<GroupData>(url, { params: data })
-        .then(async (response) => { return await response.data })
+        .then((response) => { return response })
         .catch((e) => console.log(e));
 }
