@@ -1,10 +1,15 @@
 import { FC, memo } from 'react';
+import { logout } from '../api';
 
 interface Props { }
 
 const Sidebar: FC<Props> = (props) => {
     return <div className="h-screen bg-gray-400 w-80">
         This is a sidebar
+        <button onClick={() => {
+            logout();
+            window.location.href = "/login";
+        }}>Logout</button>
     </div>;
 };
 

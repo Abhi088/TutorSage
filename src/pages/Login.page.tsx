@@ -8,6 +8,7 @@ import InputField from '../components/InputField/InputField';
 import Icon from '../components/Icons/Icons';
 import Button from '../components/Button/Button';
 import FormSwitch from '../components/FormSwitch';
+import { login } from '../api';
 
 interface Props { }
 
@@ -18,27 +19,23 @@ const Login: FC<Props> = (props) => {
     const { handleSubmit, errors, touched, isSubmitting, getFieldProps } =
         useFormik({
             initialValues: {
-                username: "",
+                email: "",
                 password: ""
             },
             validationSchema: yup.object().shape({
-                username: yup
+                email: yup
                     .string()
-                    .required("Username is required field!"),
+                    .email(() => "Email is invalid")
+                    .required("Email is required field!"),
                 password: yup
                     .string()
                     .required("Cannot login without a password")
-                    .matches(
-                        /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-                        "Password must contain at least 8 characters, one uppercase, one number and one special case character"
-                    )
             }),
-            onSubmit: (data, { setSubmitting }) => {
-                setTimeout(() => {
-                    console.log(data);
-                    setSubmitting(false);
+            onSubmit: (data) => {
+                login(data).then((response) => {
+                    console.log(response);
                     redirectHistory.push("/dashboard");
-                }, 3000);
+                });
             }
         });
 
@@ -54,12 +51,12 @@ const Login: FC<Props> = (props) => {
                 <form onSubmit={handleSubmit} className="space-y-6" method="POST">
                     <div className="space-y-12">
                         <InputField
-                            {...getFieldProps("username")}
-                            name="username"
-                            type="username"
-                            placeholder="Username"
-                            touched={touched.username}
-                            errorMessage={errors.username}
+                            {...getFieldProps("email")}
+                            name="email"
+                            type="email"
+                            placeholder="Email"
+                            touched={touched.email}
+                            errorMessage={errors.email}
                         >
                             <Icon className="mr-3" name="username"></Icon>
                         </InputField>
