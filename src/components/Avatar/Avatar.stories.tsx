@@ -19,6 +19,7 @@ export default {
         showStatus: true,
         onlineStatus: true,
         imgClass: "",
-        className: ""
+        className: "",
+        name: "Abhi"
     }
 } as Meta;

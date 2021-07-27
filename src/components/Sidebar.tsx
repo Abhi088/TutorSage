@@ -4,7 +4,7 @@ import { logout } from '../api';
 interface Props { }
 
 const Sidebar: FC<Props> = (props) => {
-    return <div className="h-screen bg-gray-400 w-80">
+    return <div className="h-screen fixed bg-gray-400 w-80">
         This is a sidebar
         <button onClick={() => {
             logout();
