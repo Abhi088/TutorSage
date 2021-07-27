@@ -1,85 +1,9 @@
-import axios from "axios";
-
-axios.interceptors.request.use(
-    function (config) {
-        const token = localStorage.getItem(LS_LOGIN_TOKEN);
-
-        if (!token) {
-            return config;
-        }
-
-        return { ...config, headers: { ...config.headers, Authorization: token } }
-    }
-)
-
-axios.interceptors.response.use(undefined, (error) => {
-    if (error.response.data.code === 9101) {
-        localStorage.removeItem(LS_LOGIN_TOKEN);
-        window.location.href = "/login";
-    }
-    return Promise.reject(error);
-});
-
-interface LoginRequest {
-    email: string;
-    password: string;
-}
-
-interface LoginResponse {
-    data: {
-        is_2fa_enabled: boolean;
-    };
-    token: string;
-    user: User;
-}
-
-interface User {
-    id: number;
-    first_name: string;
-    middle_name: string;
-    last_name: string;
-    role: "staff" | "admin";
-}
-
-
-const BASE_URL = "https://api-dev.domecompass.com";
-
-export const LS_LOGIN_TOKEN = "login_token";
-
-export const login = (data: LoginRequest) => {
-    const url = BASE_URL + "/login";
-    console.log(data);
-
-    return axios.post<LoginResponse>(url, data).then((response) => {
-        console.log(response.data.token);
-        localStorage.setItem(LS_LOGIN_TOKEN, response.data.token);
-        return response.data.user;
-    });
-};
-
-export const logout = () => {
-    localStorage.removeItem(LS_LOGIN_TOKEN);
-}
-
-interface GroupRequest {
-    limit?: number;
-    offset?: number;
-    query?: string;
-    status: "all-groups";
-}
-
-//from here
-
-export interface GroupData {
-    data: Datum[];
-}
-
-export interface Datum {
+export interface Groups {
     id: number;
     name: string;
     is_private: boolean;
     description: string;
-    introductory_message: null;
+    introductory_message?: string;
     group_image_url: null | string;
     join_code: string;
     created_at: Date;
@@ -217,16 +141,4 @@ export interface State {
     state_code: string;
     created_at: Date;
     updated_at: Date;
-}
-
-
-//till here
-
-export const fetchGroups = async (data: GroupRequest) => {
-    const url = BASE_URL + "/groups";
-
-    return await axios
-        .get<GroupData>(url, { params: data })
-        .then((response) => { return response })
-        .catch((e) => console.log(e));
 }

@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import { logout } from '../api';
+import { logout } from '../APIs/auth';
 
 interface Props { }
 

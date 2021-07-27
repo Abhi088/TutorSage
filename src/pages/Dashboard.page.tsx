@@ -2,14 +2,15 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
-import { Datum, fetchGroups } from '../api';
+import { fetchGroups } from '../APIs/groups';
 import GroupData from '../components/GroupData';
+import { Groups } from "../Models/Groups";
 
 interface Props { }
 
 const Dashboard: FC<Props> = (props) => {
 
-    const [groupData, setGroupData] = useState<Datum[]>();
+    const [groupData, setGroupData] = useState<Groups[]>();
     const [query, setQuery] = useState("");
     const [limit, setLimit] = useState(10);
 

@@ -22,9 +22,9 @@ const Avatar: React.FC<Props> = ({
 }) => {
     let avatarClass = "";
     let statusClass = "";
-    let noImageClass = "";
+    // let noImageClass = "";
     if (avatarSize === "large") {
-        noImageClass = " text-5xl pt-3 ";
+        // noImageClass = " text-5xl pt-3 ";
         if (shape === "circular") {
             avatarClass = " h-20 w-20 rounded-full ";
             statusClass = " h-5 w-5 border-3 left-3/4 bottom-1/3 ";
@@ -35,7 +35,7 @@ const Avatar: React.FC<Props> = ({
         }
     }
     else if (avatarSize === "medium") {
-        noImageClass = " text-3xl pt-2 ";
+        // noImageClass = " text-3xl pt-2 ";
         if (shape === "circular") {
             avatarClass = " h-14 w-14 rounded-full ";
             statusClass = " h-4 w-4 border-3 left-3/4 bottom-1/3 ";
@@ -46,7 +46,7 @@ const Avatar: React.FC<Props> = ({
         }
     }
     else {
-        noImageClass = " text-xl pt-1 ";
+        // noImageClass = " text-xl pt-1 ";
         if (shape === "circular") {
             avatarClass = " h-10 w-10 rounded-full ";
             statusClass = " h-3 w-3 border-2 left-3/4 bottom-1/3 ";

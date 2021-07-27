@@ -8,7 +8,7 @@ import InputField from '../components/InputField/InputField';
 import Icon from '../components/Icons/Icons';
 import Button from '../components/Button/Button';
 import FormSwitch from '../components/FormSwitch';
-import { login } from '../api';
+import { login } from '../APIs/auth';
 
 interface Props { }
 
