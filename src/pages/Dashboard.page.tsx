@@ -52,12 +52,9 @@ const Dashboard: FC<Props> = (props) => {
                         }
                     } />
             </form>
-
-            {/* <button className="w-20 h-10 bg-danger-dark">Click me</button> */}
             {groupData?.map((item, index) => {
                 return (<div
-                    key={index}
-                    className="">
+                    key={index}>
                     <GroupData className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`} name={item.name} desc={item.description} imgSrc={item.group_image_url}></GroupData>
                 </div>);
             })}

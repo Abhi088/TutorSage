@@ -14,6 +14,7 @@ export default {
     component: ProgressBar,
     args: {
         progress: 30,
-        progressType: "primary"
+        theme: "primary",
+        customThemeClass: ""
     }
 } as Meta;

@@ -1,33 +1,31 @@
 import React from "react";
 
 interface Props extends React.HTMLProps<HTMLButtonElement> {
-    progressType?: "primary" | "success" | "danger";
+    theme: "primary" | "success" | "danger" | "custom";
+    customThemeClass?: string;
     progress: number;
 }
 
 const ProgressBar: React.FC<Props> = ({
     progress,
-    progressType
+    customThemeClass,
+    theme
 }) => {
-    let progressBarClass = "";
 
-    if (progressType === "success") {
-        progressBarClass += "bg-success-light ";
-    } else if (progressType === "danger") {
-        progressBarClass += "bg-danger-light ";
-    } else {
-        progressBarClass += "bg-primary-medium ";
-    }
+    const progressBarClass = {
+        primary: "bg-primary-medium",
+        success: "bg-success-light",
+        danger: "bg-danger-light",
+        custom: customThemeClass
+    };
 
     return (
         <div className="w-full h-5 bg-gray-100 rounded-full">
-            <div style={{ width: `${progress}%` }} className={`${progressBarClass} h-5 rounded-full`}></div>
+            <div style={{ width: `${progress}%` }} className={`${progressBarClass[theme]} h-5 rounded-full`}></div>
         </div>
     );
 };
 
-ProgressBar.defaultProps = {
-    progressType: "primary"
-};
+ProgressBar.defaultProps = {};
 
 export default React.memo(ProgressBar);
