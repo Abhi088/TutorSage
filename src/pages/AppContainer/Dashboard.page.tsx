@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchGroups } from '../APIs/groups';
-import GroupData from '../components/GroupData';
-import { Groups } from "../Models/Groups";
+import { fetchGroups } from '../../APIs/groups';
+import GroupData from '../../components/GroupData';
+import { Groups } from "../../Models/Groups";
 
 interface Props { }
 
