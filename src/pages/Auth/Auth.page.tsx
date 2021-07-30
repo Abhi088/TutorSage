@@ -4,7 +4,8 @@ import AuthHero from '../../components/AuthHero';
 import LoginPage from './Login.page';
 import SignupPage from './Signup.page';
 
-interface Props { }
+interface Props {
+}
 
 const Auth: FC<Props> = (props) => {
     return (<div className="flex flex-row justify-between">

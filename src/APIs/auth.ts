@@ -33,3 +33,19 @@ export const login = (data: LoginRequest) => {
 export const logout = () => {
     localStorage.removeItem(LS_AUTH_TOKEN);
 }
+
+interface MeResponse {
+    data: User;
+}
+
+export const me = () => {
+    const url = BASE_URL + "/me";
+    return axios.get<MeResponse>(url).then((response) => response.data.data);
+};
+
+export const updateMe = () => {
+    const url = BASE_URL + "/me";
+    return axios
+        .patch(url, { first_name: "kuch bhi" })
+        .then((response) => response.data.data);
+};

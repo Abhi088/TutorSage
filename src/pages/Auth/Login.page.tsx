@@ -1,4 +1,4 @@
-import { FC, memo, useState } from 'react';
+import { FC, memo, useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from "yup";
@@ -9,19 +9,25 @@ import Icon from '../../components/Icons/Icons';
 import Button from '../../components/Button/Button';
 import FormSwitch from '../../components/FormSwitch';
 import { login } from '../../APIs/auth';
+import AppContext from '../../App.context';
 
-interface Props { }
+interface Props {
+}
 
 const Login: FC<Props> = (props) => {
 
+    const { setUser } = useContext(AppContext);
+
     const redirectHistory = useHistory();
 
-    const { handleSubmit, errors, touched, isSubmitting, getFieldProps } =
+    //const { handleSubmit, errors, touched, isSubmitting, getFieldProps, isValid } =
+    const { handleSubmit, errors, touched, getFieldProps, isValid } =
         useFormik({
             initialValues: {
                 email: "",
                 password: ""
             },
+            isInitialValid: false,
             validationSchema: yup.object().shape({
                 email: yup
                     .string()
@@ -32,8 +38,8 @@ const Login: FC<Props> = (props) => {
                     .required("Cannot login without a password")
             }),
             onSubmit: (data) => {
-                login(data).then((response) => {
-                    console.log(response);
+                login(data).then((u) => {
+                    setUser(u);
                     redirectHistory.push("/dashboard");
                 });
             }
@@ -75,7 +81,7 @@ const Login: FC<Props> = (props) => {
                         <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
                             setIsShowPassword(!isShowPassword)
                         }></FormSwitch>
-                        <Button buttonSize="small" text="Log in" buttonDisabled={isSubmitting} />
+                        <Button buttonSize="small" text="Log in" buttonDisabled={isValid} />
                     </div>
                     <div className="flex flex-col text-center space-y-4 pt-8">
                         <div className="text-secondary-light space-x-3">

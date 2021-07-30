@@ -5,7 +5,8 @@ import DashboardPage from './Dashboard.page';
 import RecordingsPage from './Recordings.page';
 import LecturePage from './Lecture.page';
 
-interface Props { }
+interface Props {
+}
 
 const AppContainer: FC<Props> = (props) => {
     return (
