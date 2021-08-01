@@ -12,6 +12,7 @@
     "@types/node": "^12.20.16",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
+    "@types/react-redux": "^7.1.18",
     "@types/react-router-dom": "^5.1.8",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
@@ -19,8 +20,10 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
+    "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.0",
     "typescript": "^4.3.5",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.9"
