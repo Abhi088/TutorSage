@@ -1,4 +1,4 @@
-import { FC, Suspense, useEffect, useState } from 'react';
+import { FC, Suspense, useEffect, useState, useMemo } from 'react';
 import { Redirect, Route, BrowserRouter, Switch } from 'react-router-dom';
 import { LS_AUTH_TOKEN } from './Constants/constants';
 import AppContainerLazy from './pages/AppContainer/AppContainer.lazy';
@@ -20,14 +20,19 @@ const App: FC<Props> = () => {
     updateMe();
     if (!token) return;
     me().then((u) => setUser(u));
-  })
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const data = useMemo(() => {
+    return { user, setUser };
+  }, [user, setUser])
+
 
   if (!user && token) {
     return <div>Ruko Zara, Sabr Karo</div>
   }
 
   return (
-    <AppContext.Provider value={{ user, setUser }}>
+    <AppContext.Provider value={data}>
       <Suspense fallback={<div className="text-red-500">Ruko Jara, Sabr Karo</div>}>
         <BrowserRouter>
           <Switch>
