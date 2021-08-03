@@ -1,13 +1,13 @@
-import { FC, memo, useContext } from 'react';
+import { FC, memo } from 'react';
 import { logout } from '../APIs/auth';
-import AppContext from '../App.context';
+import { useAppSelector } from '../store';
 
 interface Props {
 }
 
 const Sidebar: FC<Props> = (props) => {
 
-    const { user } = useContext(AppContext);
+    const user = useAppSelector((state) => state.me);
 
     return <div className="bg-gray-400 w-1/12">
         This is a sidebar

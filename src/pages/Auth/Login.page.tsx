@@ -1,5 +1,6 @@
-import { FC, memo, useState, useContext } from 'react';
+import { FC, memo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from "yup";
 import Copyrights from '../../components/Copyrights';
@@ -9,19 +10,18 @@ import Icon from '../../components/Icons/Icons';
 import Button from '../../components/Button/Button';
 import FormSwitch from '../../components/FormSwitch';
 import { login } from '../../APIs/auth';
-import AppContext from '../../App.context';
 
 interface Props {
 }
 
 const Login: FC<Props> = (props) => {
 
-    const { setUser } = useContext(AppContext);
+    const dispatch = useDispatch();
 
     const redirectHistory = useHistory();
 
-    //const { handleSubmit, errors, touched, isSubmitting, getFieldProps, isValid } =
-    const { handleSubmit, errors, touched, getFieldProps, isValid } =
+    const { handleSubmit, errors, touched, isSubmitting, getFieldProps } =
+        // const { handleSubmit, errors, touched, getFieldProps, isValid } =
         useFormik({
             initialValues: {
                 email: "",
@@ -39,7 +39,7 @@ const Login: FC<Props> = (props) => {
             }),
             onSubmit: (data) => {
                 login(data).then((u) => {
-                    setUser(u);
+                    dispatch({ type: "me/login", payload: u });
                     redirectHistory.push("/dashboard");
                 });
             }
@@ -81,7 +81,7 @@ const Login: FC<Props> = (props) => {
                         <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
                             setIsShowPassword(!isShowPassword)
                         }></FormSwitch>
-                        <Button buttonSize="small" text="Log in" buttonDisabled={isValid} />
+                        <Button buttonSize="small" text="Log in" buttonDisabled={isSubmitting} />
                     </div>
                     <div className="flex flex-col text-center space-y-4 pt-8">
                         <div className="text-secondary-light space-x-3">
