@@ -1,4 +1,4 @@
-import { Groups } from "../Models/Groups";
+import { Group } from "../Models/Groups";
 import axios from "axios";
 import { BASE_URL } from "../Constants/constants";
 import { axiosRequest, axiosResponse } from "../Axios/axios";
@@ -14,7 +14,7 @@ interface GroupRequest {
 }
 
 interface GroupResponse {
-    data: Groups[];
+    data: Group[];
 }
 
 export const fetchGroups = async (data: GroupRequest) => {
@@ -22,6 +22,6 @@ export const fetchGroups = async (data: GroupRequest) => {
 
     return await axios
         .get<GroupResponse>(url, { params: data })
-        .then((response) => { return response })
+        .then((response) => { return response.data.data })
         .catch((e) => console.log(e));
 }

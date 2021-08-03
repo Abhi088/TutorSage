@@ -5,8 +5,8 @@ import { LS_AUTH_TOKEN } from './Constants/constants';
 import AppContainerLazy from './pages/AppContainer/AppContainer.lazy';
 import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
-import { me, updateMe } from './APIs/auth';
-import { meFetchAction, useAppSelector } from './store';
+import { me } from './APIs/auth'; //updateMe import
+import { meFetchAction, uiSidebarToggle, useAppSelector } from './store';
 
 interface Props { }
 
@@ -19,10 +19,16 @@ const App: FC<Props> = () => {
   const token = localStorage.getItem(LS_AUTH_TOKEN);
 
   useEffect(() => {
-    updateMe();
+    // updateMe();
     if (!token) return;
 
     me().then((u) => dispatch(meFetchAction(u)));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(uiSidebarToggle(false));
+    }, 8000)
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!user && token) {

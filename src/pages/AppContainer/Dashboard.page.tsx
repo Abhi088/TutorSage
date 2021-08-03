@@ -1,33 +1,31 @@
 import { useEffect } from 'react';
-import { useState } from 'react';
 import { FC, memo } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchGroups } from '../../APIs/groups';
 import GroupData from '../../components/GroupData';
-import { Groups } from "../../Models/Groups";
+import { useAppSelector } from '../../store';
 
 interface Props { }
 
 const Dashboard: FC<Props> = (props) => {
 
-    const [groupData, setGroupData] = useState<Groups[]>();
-    const [query, setQuery] = useState("");
-    const [limit, setLimit] = useState(10);
+    const query = useAppSelector(state => state.groupQuery);
+
+    const groups = useAppSelector(state => {
+        const groupsIds = state.groupQueryMap[state.groupQuery] || [];
+        const group = groupsIds.map((id) => state.groups[id]);
+        return group;
+    });
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchGroups({ status: "all-groups", query: query, limit: limit })
-            .then((response) => {
-                if (response?.status === 200) {
-                    console.log(response?.data.data);
-                    setGroupData(response?.data.data);
-                } else {
-                    console.log("Error while fetching data", response?.status);
-                }
-            })
-            .catch((error) => {
-                console.log(error);
+        fetchGroups({ status: "all-groups", query: query })
+            .then((groups) => {
+                dispatch({ type: "groups/fetch", payload: { groups: groups, query } })
             });
-    }, [query, limit]);
+    }, [query]); //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="m-auto mt-20">
@@ -37,25 +35,16 @@ const Dashboard: FC<Props> = (props) => {
                     type="text"
                     placeholder="Search Groups"
                     className="w-2/3 border-2 border-black"
+                    value={query}
                     onChange={(event) => {
-                        setQuery(event?.target.value);
+                        dispatch({ type: "groups/query", payload: event.target.value });
                     }}
                 />
-                <input
-                    type="number"
-                    placeholder="Groups per page"
-                    value={limit}
-                    className="w-1/3 border-2 border-black"
-                    onChange={
-                        (event) => {
-                            setLimit(parseInt(event?.target.value));
-                        }
-                    } />
             </form>
-            {groupData?.map((item, index) => {
+            {groups.map((group, index) => {
                 return (<div
                     key={index}>
-                    <GroupData className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`} name={item.name} desc={item.description} imgSrc={item.group_image_url}></GroupData>
+                    <GroupData className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`} name={group.name} desc={group.description} imgSrc={group.group_image_url}></GroupData>
                 </div>);
             })}
             <Link to="/recordings"><span className="underline text-blue-500">Go to Recordings</span></Link>

@@ -7,11 +7,11 @@ interface Props {
 
 const Sidebar: FC<Props> = (props) => {
 
-    const user = useAppSelector((state) => state.me);
+    const userFirstName = useAppSelector((state) => state.me?.first_name);
 
     return <div className="bg-gray-400 w-1/12">
         This is a sidebar
-        <div className="text-blue-800">{user!.first_name}</div>
+        <div className="text-blue-800">{userFirstName}</div>
         <button className="bg-primary-medium w-full ring-2 ring-primary-dark rounded-full mt-10" onClick={() => {
             logout();
             window.location.href = "/login";

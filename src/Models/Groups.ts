@@ -1,4 +1,4 @@
-export interface Groups {
+export interface Group {
     id: number;
     name: string;
     is_private: boolean;
