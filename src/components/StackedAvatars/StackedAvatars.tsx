@@ -31,8 +31,8 @@ const StackedAvatars: React.FC<Props> = ({
             imgClass="border-3 border-white"
             imgSrc={avatarsSrc[i]}
             showStatus={false}
-            avatarSize={size}
-            name="Abhi"></Avatar>);
+            avatarSize={size}>
+        </Avatar>);
     }
 
     return (

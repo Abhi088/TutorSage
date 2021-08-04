@@ -7,7 +7,7 @@ interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
     imgSrc: string | null;
     shape?: "circular" | "square";
     imgClass?: string;
-    name: string;
+    // name: string;
 }
 
 const Avatar: React.FC<Props> = ({
@@ -18,7 +18,7 @@ const Avatar: React.FC<Props> = ({
     shape,
     className,
     imgClass,
-    name
+    // name
 }) => {
     let avatarClass = "";
     let statusClass = "";
