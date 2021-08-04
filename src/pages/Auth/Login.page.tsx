@@ -27,7 +27,6 @@ const Login: FC<Props> = (props) => {
                 email: "",
                 password: ""
             },
-            isInitialValid: false,
             validationSchema: yup.object().shape({
                 email: yup
                     .string()
