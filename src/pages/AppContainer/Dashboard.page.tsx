@@ -28,7 +28,7 @@ const Dashboard: FC<Props> = (props) => {
     }, [query]); //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <div className="m-auto mt-20">
+        <div className="m-auto mt-20 font-nunito">
             This is Dashboard page.
             <form className="flex flex-row space-x-3 mb-10">
                 <input
