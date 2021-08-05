@@ -5,6 +5,9 @@ import DashboardPage from './Dashboard.page';
 import RecordingsPage from './Recordings.page';
 import LecturePage from './Lecture.page';
 import Navbar from '../../components/Navbar';
+import { lazy } from "react";
+
+const UserLazy = lazy(() => import("./User/User.page"));
 
 interface Props {
 }
@@ -24,6 +27,9 @@ const AppContainer: FC<Props> = (props) => {
                     </Route>
                     <Route path="/batch/:batchNumber/lecture/:lectureNumber">
                         <LecturePage></LecturePage>
+                    </Route>
+                    <Route path="/profile">
+                        <UserLazy></UserLazy>
                     </Route>
                 </Switch>
             </div>
