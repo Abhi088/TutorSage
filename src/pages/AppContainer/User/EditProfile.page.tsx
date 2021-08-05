@@ -67,15 +67,13 @@ const EditProfile: FC<Props> = (props) => {
         });
 
     return (
-        <div className={`w-full`}>
-            <form className={`p-5 space-y-5`} onSubmit={handleSubmit}>
-                <div className={`p-5 border-black border-2 rounded-lg`}>
-                    <h1 className={``}>General Information</h1>
-                    <div className={`flex flex-row`}>
-                        <button>
-                            <Avatar avatarSize="xl" shape="square" showStatus={false} imgSrc={user.profile_pic_url}></Avatar>
-                        </button>
-                        <div className={`flex flex-col w-full`}>
+        <div className={`w-full p-5 bg-gray-200 h-screen`}>
+            <form className={`space-y-5`} onSubmit={handleSubmit}>
+                <div className={`p-5 bg-white border border-gray-300 rounded-lg`}>
+                    <h1 className={`font-bold mb-10`}>GENERAL INFORMATION</h1>
+                    <div className={`flex flex-row space-x-5`}>
+                        <Avatar avatarSize="xl" shape="square" showStatus={false} imgSrc={user.profile_pic_url}></Avatar>
+                        <div className={`flex flex-col w-full space-y-5`}>
                             <div className={`flex flex-row space-x-5`}>
                                 <EditInput
                                     {...getFieldProps("first_name")}
@@ -99,51 +97,71 @@ const EditProfile: FC<Props> = (props) => {
                                     className={`w-1/3`}
                                 />
                             </div>
-                            <div>
-                                <select {...getFieldProps("birth_date")}>
-                                    {day.map((value, index) => {
-                                        return <option key={index}>{value}</option>
-                                    })}
-                                </select>
-                                <select {...getFieldProps("birth_month")}>
-                                    {month.map((value, index) => {
-                                        return <option key={index}>{value}</option>
-                                    })}
-                                </select>
-                                <select {...getFieldProps("birth_year")}>
-                                    {year.map((value, index) => {
-                                        return <option key={index}>{value}</option>
-                                    })}
-                                </select>
-                            </div>
+                            <label htmlFor="dateOfBirth" className="flex flex-col">
+                                <span className={`text-xs text-gray-500`} >Date of Birth</span>
+                                <div className="flex flex-row space-x-2">
+                                    <select
+                                        {...getFieldProps("birth_date")}
+                                        className={`outline-none border rounded-md h-10 w-16 border-gray-400`}
+                                        onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-16 border-primary-medium shadow-primary" }}
+                                        onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-16 border-gray-400" }}
+                                    >
+                                        {day.map((value, index) => {
+                                            return <option key={index}>{value}</option>
+                                        })}
+                                    </select>
+                                    <select
+                                        {...getFieldProps("birth_month")}
+                                        className={`outline-none border rounded-md h-10 w-16 border-gray-400`}
+                                        onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-16 border-primary-medium shadow-primary" }}
+                                        onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-16 border-gray-400" }}
+                                    >
+                                        {month.map((value, index) => {
+                                            return <option key={index}>{value}</option>
+                                        })}
+                                    </select>
+                                    <select
+                                        {...getFieldProps("birth_year")}
+                                        className={`outline-none border rounded-md h-10 w-20 border-gray-400`}
+                                        onFocus={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-primary-medium shadow-primary" }}
+                                        onBlur={(event) => { event.target.className = "outline-none border rounded-md h-10 w-20 border-gray-400" }}
+                                    >
+                                        {year.map((value, index) => {
+                                            return <option key={index}>{value}</option>
+                                        })}
+                                    </select>
+                                </div>
+                            </label>
                         </div>
                     </div>
                 </div>
-                <div className={`p-5 border-black border-2 rounded-lg`}>
-                    <h1>Contact</h1>
-                    <div className={`flex flex-row`}>
+                <div className={`p-5 bg-white border border-gray-300 rounded-lg`}>
+                    <h1 className={`font-bold mb-4`}>Contact</h1>
+                    <div className={`flex flex-row space-x-5`}>
                         <EditInput
                             {...getFieldProps("email")}
                             touched={touched.email}
                             errorMessage={errors.email}
                             label="Email"
+                            className="w-1/2"
                         />
                         <EditInput
                             {...getFieldProps("phone_number")}
                             touched={touched.phone_number}
                             errorMessage={errors.phone_number}
                             label="Phone Number"
+                            className="w-1/2"
                         />
                     </div>
                 </div>
-                <div className={`flex flex-row justify-between`}>
+                <div className={`fixed bottom-0 flex flex-row justify-between`} style={{ width: 'calc(100% - 164px)' }}>
                     <Button text="Reset All" type="reset" onClick={(event) => {
                         handleReset.call(null, event);
                     }} />
-                    <Button text="Save Changes" type="submit" buttonType="success" />
+                    <Button text="Save Changes" type="submit" buttonType="success" disabled={isSubmitting} />
                 </div>
             </form>
-        </div>
+        </div >
     );
 };
 
