@@ -50,7 +50,7 @@ const Signup: FC<Props> = (props) => {
     const [isShowPassword, setIsShowPassword] = useState(false);
 
     return (
-        <div className="w-full font-nunito">
+        <div className="w-full">
             <div className="px-10 sm:px-0 flex flex-col justify-center min-h-screen space-y-16 mx-auto max-w-26rem">
                 <div className="space-y-3">
                     <h1 className="text-5xl font-light">Get started with a free account</h1>
