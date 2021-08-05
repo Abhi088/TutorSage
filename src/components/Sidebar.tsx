@@ -7,7 +7,9 @@ interface Props {
 
 const Sidebar: FC<Props> = (props) => {
 
-    const userFirstName = useAppSelector((state) => state.me?.first_name);
+    const userFirstName = useAppSelector(
+        (state) => state.user.byId[state.auth.id!].first_name
+    );
 
     return <div className="bg-gray-400 w-1/12">
         This is a sidebar

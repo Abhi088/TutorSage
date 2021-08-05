@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { FC, memo } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { groupActions } from '../../actions/groups.actions';
 import { fetchGroups } from '../../APIs/groups';
 import GroupData from '../../components/GroupData';
 import { useAppSelector } from '../../store';
@@ -10,21 +10,19 @@ interface Props { }
 
 const Dashboard: FC<Props> = (props) => {
 
-    const query = useAppSelector(state => state.groupQuery);
+    const query = useAppSelector(state => state.groups.query);
 
     const groups = useAppSelector(state => {
-        const groupsIds = state.groupQueryMap[state.groupQuery] || [];
-        const group = groupsIds.map((id) => state.groups[id]);
+        const groupsIds = state.groups.queryMap[state.groups.query] || [];
+        const group = groupsIds.map((id) => state.groups.byId[id]);
         return group;
     });
-
-    const dispatch = useDispatch();
 
     useEffect(() => {
         fetchGroups({ status: "all-groups", query: query })
             .then((groups) => {
-                dispatch({ type: "groups/fetch", payload: { groups: groups, query } })
-            });
+                groupActions.fetch(groups!, query) // check this once
+            })
     }, [query]); //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
@@ -37,7 +35,7 @@ const Dashboard: FC<Props> = (props) => {
                     className="w-2/3 border-2 border-black"
                     value={query}
                     onChange={(event) => {
-                        dispatch({ type: "groups/query", payload: event.target.value });
+                        groupActions.query(event.target.value)
                     }}
                 />
             </form>

@@ -1,6 +1,5 @@
 import { FC, memo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from "yup";
 import Copyrights from '../../components/Copyrights';
@@ -10,13 +9,12 @@ import Icon from '../../components/Icons/Icons';
 import Button from '../../components/Button/Button';
 import FormSwitch from '../../components/FormSwitch';
 import { login } from '../../APIs/auth';
+import { authActions } from '../../actions/auth.actions';
 
 interface Props {
 }
 
 const Login: FC<Props> = (props) => {
-
-    const dispatch = useDispatch();
 
     const redirectHistory = useHistory();
 
@@ -38,7 +36,7 @@ const Login: FC<Props> = (props) => {
             }),
             onSubmit: (data) => {
                 login(data).then((u) => {
-                    dispatch({ type: "me/login", payload: u });
+                    authActions.login(u);
                     redirectHistory.push("/dashboard");
                 });
             }

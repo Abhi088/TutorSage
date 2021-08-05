@@ -1,20 +1,20 @@
 import { FC, Suspense, useEffect } from 'react';
 import { Redirect, Route, BrowserRouter, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { LS_AUTH_TOKEN } from './Constants/constants';
 import AppContainerLazy from './pages/AppContainer/AppContainer.lazy';
 import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
 import { me } from './APIs/auth'; //updateMe import
-import { meFetchAction, uiSidebarToggle, useAppSelector } from './store';
+import { useAppSelector } from './store';
+import { authActions } from './actions/auth.actions';
 
 interface Props { }
 
 const App: FC<Props> = () => {
 
-  const user = useAppSelector((state) => state.me);
-
-  const dispatch = useDispatch();
+  const user = useAppSelector(
+    (state) => state.auth.id && state.user.byId[state.auth.id]
+  );
 
   const token = localStorage.getItem(LS_AUTH_TOKEN);
 
@@ -22,17 +22,13 @@ const App: FC<Props> = () => {
     // updateMe();
     if (!token) return;
 
-    me().then((u) => dispatch(meFetchAction(u)));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(uiSidebarToggle(false));
-    }, 8000)
+    me().then((u) => {
+      authActions.fetch(u);
+    });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!user && token) {
-    return <div>Ruko Zara, Sabr Karo</div>
+    return <div>Ruko Zara, Sabr Kar</div>
   }
 
   return (
