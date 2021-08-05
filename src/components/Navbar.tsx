@@ -15,7 +15,7 @@ const Navbar: FC<Props> = ({ profileImg }) => {
         <div className="flex flex-row justify-between px-10 py-2 bg-gray-900 items-center">
             <h1 className="text-white text-xl font-semibold">CODEBITS</h1>
             <div onClick={() => { setShowProfileMenu(!showProfileMenu) }}>
-                <Avatar imgSrc={profileImg} shape="square" showStatus={false} ></Avatar>
+                <Avatar imgSrc={profileImg} shape="square" showStatus={false} avatarSize="xs" ></Avatar>
                 <div className={`${(showProfileMenu ? "visible" : "hidden")}`}>
                     <ul>
                         <li><LinkTo to="/profile" text="Profile" /></li>

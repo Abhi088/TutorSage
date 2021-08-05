@@ -6,6 +6,7 @@ import RecordingsPage from './Recordings.page';
 import LecturePage from './Lecture.page';
 import Navbar from '../../components/Navbar';
 import { lazy } from "react";
+import { useAppSelector } from '../../store';
 
 const UserLazy = lazy(() => import("./User/User.page"));
 
@@ -13,9 +14,12 @@ interface Props {
 }
 
 const AppContainer: FC<Props> = (props) => {
+
+    const user = useAppSelector((state) => state.user.byId[state.auth.id!]);
+
     return (
         <div>
-            <Navbar profileImg="https://designreset.com/cork/ltr/demo4/assets/img/profile-1.jpeg"></Navbar>
+            <Navbar profileImg={user.profile_pic_url}></Navbar>
             <div className="flex flex-row">
                 <Sidebar></Sidebar>
                 <Switch>

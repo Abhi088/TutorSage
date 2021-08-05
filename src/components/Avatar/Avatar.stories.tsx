@@ -13,7 +13,7 @@ export default {
     title: 'Components/Avatars',
     component: Avatar,
     args: {
-        avatarSize: "small",
+        avatarSize: "sm",
         imgSrc: "https://designreset.com/cork/ltr/demo4/assets/img/profile-12.jpeg",
         shape: "square",
         showStatus: true,

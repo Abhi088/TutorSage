@@ -20,6 +20,6 @@ export default {
             "https://designreset.com/cork/ltr/demo4/assets/img/profile-4.jpeg",
             "https://designreset.com/cork/ltr/demo4/assets/img/profile-5.jpeg"
         ],
-        size: "medium"
+        size: "md"
     }
 } as Meta;

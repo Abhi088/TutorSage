@@ -4,7 +4,7 @@ import Avatar from "../Avatar/Avatar";
 
 interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
     avatarsSrc: string[];
-    size?: "small" | "medium" | "large";
+    size?: "sm" | "md" | "lg";
 }
 
 const StackedAvatars: React.FC<Props> = ({
@@ -14,10 +14,10 @@ const StackedAvatars: React.FC<Props> = ({
     let stackedValueClass = "";
     let avatarShift = 3;
 
-    if (size === "large") {
+    if (size === "lg") {
         stackedValueClass = " h-10 text-2xl tracking-tighter ";
         avatarShift = 5;
-    } else if (size === "medium") {
+    } else if (size === "md") {
         stackedValueClass = " h-7 tracking-tighter ";
         avatarShift = 4;
     } else {
@@ -47,7 +47,7 @@ const StackedAvatars: React.FC<Props> = ({
 };
 
 StackedAvatars.defaultProps = {
-    size: "medium"
+    size: "md"
 };
 
 export default React.memo(StackedAvatars);
