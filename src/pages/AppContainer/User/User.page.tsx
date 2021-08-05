@@ -1,9 +1,7 @@
 import { FC, memo } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Profile from './Profile.page';
-import { lazy } from "react";
-
-const EditProfileLazy = lazy(() => import("./EditProfile.page"));
+import EditProfile from "./EditProfile.page";
 
 interface Props {
 }
@@ -11,11 +9,11 @@ interface Props {
 const User: FC<Props> = (props) => {
     return (
         <Switch>
-            <Route path='/profile/edit'>
-                <EditProfileLazy></EditProfileLazy>
-            </Route>
             <Route path='/profile' exact>
                 <Profile></Profile>
+            </Route>
+            <Route path='/profile/edit'>
+                <EditProfile></EditProfile>
             </Route>
         </Switch>
     );

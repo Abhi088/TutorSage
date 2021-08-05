@@ -35,7 +35,8 @@ module.exports = {
         '4px': '0.25rem'
       },
       borderWidth: {
-        '3': '3px'
+        '3': '3px',
+        '0.5': '0.5px'
       },
       boxShadow: {
         primary: '0 10px 20px -10px #4361ee',
@@ -56,6 +57,9 @@ module.exports = {
       },
       fontSize: {
         '2xs': '0.5rem'
+      },
+      inset: {
+        '22': '5.5rem'
       }
     },
   },
