@@ -5,16 +5,15 @@ import AppContainerLazy from './pages/AppContainer/AppContainer.lazy';
 import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
 import { me } from './APIs/auth'; //updateMe import
-import { useAppSelector } from './store';
 import { authActions } from './actions/auth.actions';
+import { useAppSelector } from './store';
+import { meSelector } from './selectors/user.selectors';
 
 interface Props { }
 
 const App: FC<Props> = () => {
 
-  const user = useAppSelector(
-    (state) => state.auth.id && state.user.byId[state.auth.id]
-  );
+  const user = useAppSelector(meSelector);
 
   const token = localStorage.getItem(LS_AUTH_TOKEN);
 

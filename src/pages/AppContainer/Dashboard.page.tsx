@@ -4,19 +4,16 @@ import { Link } from 'react-router-dom';
 import { groupActions } from '../../actions/groups.actions';
 import { fetchGroups } from '../../APIs/groups';
 import GroupData from '../../components/GroupData';
+import { groupQuerySelector, groupsFetchSelector } from '../../selectors/groups.selectors';
 import { useAppSelector } from '../../store';
 
 interface Props { }
 
 const Dashboard: FC<Props> = (props) => {
 
-    const query = useAppSelector(state => state.groups.query);
+    const query = useAppSelector(groupQuerySelector);
 
-    const groups = useAppSelector(state => {
-        const groupsIds = state.groups.queryMap[state.groups.query] || [];
-        const group = groupsIds.map((id) => state.groups.byId[id]);
-        return group;
-    });
+    const groups = useAppSelector(groupsFetchSelector);
 
     useEffect(() => {
         fetchGroups({ status: "all-groups", query: query })
@@ -27,21 +24,18 @@ const Dashboard: FC<Props> = (props) => {
 
     return (
         <div className="m-auto mt-20">
-            This is Dashboard page.
-            <form className="flex flex-row space-x-3 mb-10">
-                <input
-                    type="text"
-                    placeholder="Search Groups"
-                    className="w-2/3 border-2 border-black"
-                    value={query}
-                    onChange={(event) => {
-                        groupActions.query(event.target.value)
-                    }}
-                />
-            </form>
+            <input
+                type="text"
+                placeholder="Search Groups"
+                className="w-2/3 border-2 border-black"
+                value={query}
+                onChange={(event) => {
+                    groupActions.query(event.target.value)
+                }}
+            />
             {groups.map((group, index) => {
                 return (<div
-                    key={index}>
+                    key={group.id}>
                     <GroupData className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`} name={group.name} desc={group.description} imgSrc={group.group_image_url}></GroupData>
                 </div>);
             })}

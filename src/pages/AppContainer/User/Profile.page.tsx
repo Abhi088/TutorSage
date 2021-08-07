@@ -8,8 +8,9 @@ const Profile: FC<Props> = (props) => {
 
     const user = useAppSelector((state) => state.user.byId[state.auth.id!]);
 
-    return (<div>
+    return (<div className="flex flex-col space-y-5">
         <LinkTo to="/profile/edit" text="Edit Profile"></LinkTo>
+        <LinkTo to="/dashboard" text="Go To Dashboard"></LinkTo>
         {user.first_name}
     </div>);
 };
