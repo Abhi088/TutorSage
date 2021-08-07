@@ -12,7 +12,7 @@ const ProgressBar: React.FC<Props> = ({
     theme
 }) => {
 
-    const progressBarClass = {
+    const themeClass = {
         primary: "bg-primary-medium",
         success: "bg-success-light",
         danger: "bg-danger-light",
@@ -21,7 +21,7 @@ const ProgressBar: React.FC<Props> = ({
 
     return (
         <div className="w-full h-5 bg-gray-100 rounded-full">
-            <div style={{ width: `${progress}%` }} className={`${progressBarClass[theme]} h-5 rounded-full`}></div>
+            <div style={{ width: `${progress}%` }} className={`${themeClass[theme]} h-5 rounded-full`}></div>
         </div>
     );
 };

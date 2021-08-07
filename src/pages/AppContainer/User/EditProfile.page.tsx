@@ -158,7 +158,7 @@ const EditProfile: FC<Props> = (props) => {
                     <Button text="Reset All" type="reset" onClick={(event) => {
                         handleReset.call(null, event);
                     }} />
-                    <Button text="Save Changes" type="submit" buttonType="success" disabled={isSubmitting} />
+                    <Button text="Save Changes" type="submit" theme="success" disabled={isSubmitting} />
                 </div>
             </form>
         </div >

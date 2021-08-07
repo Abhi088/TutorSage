@@ -16,7 +16,7 @@ export default {
         buttonDisabled: false,
         text: "Click Me!",
         buttonSize: "small",
-        buttonType: "primary",
+        theme: "primary",
         buttonStyle: "solid",
         className: ""
     }

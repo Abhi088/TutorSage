@@ -78,7 +78,7 @@ const Login: FC<Props> = (props) => {
                         <FormSwitch forSetting="Show Password" enabled={isShowPassword} setEnabled={() =>
                             setIsShowPassword(!isShowPassword)
                         }></FormSwitch>
-                        <Button buttonSize="small" text="Log in" buttonDisabled={isSubmitting} />
+                        <Button buttonSize="sm" text="Log in" buttonDisabled={isSubmitting} />
                     </div>
                     <div className="flex flex-col text-center space-y-4 pt-8">
                         <div className="text-secondary-light space-x-3">

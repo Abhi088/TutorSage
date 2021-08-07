@@ -11,17 +11,16 @@ const StackedAvatars: React.FC<Props> = ({
     avatarsSrc,
     size
 }) => {
-    let stackedValueClass = "";
-    let avatarShift = 3;
+    const avatarShift = {
+        lg: 5,
+        md: 4,
+        sm: 3
+    }
 
-    if (size === "lg") {
-        stackedValueClass = " h-10 text-2xl tracking-tighter ";
-        avatarShift = 5;
-    } else if (size === "md") {
-        stackedValueClass = " h-7 tracking-tighter ";
-        avatarShift = 4;
-    } else {
-        stackedValueClass = " h-5 text-xs tracking-tighter ";
+    const stackedValueClass = {
+        lg: " h-10 text-2xl tracking-tighter ",
+        md: " h-7 tracking-tighter ",
+        sm: " h-5 text-xs tracking-tighter "
     }
 
     let avatars = [];
@@ -36,10 +35,10 @@ const StackedAvatars: React.FC<Props> = ({
     }
 
     return (
-        <div className={`flex flex-row -space-x-${avatarShift}`}>
+        <div className={`flex flex-row -space-x-${avatarShift[size!]}`}>
             {avatars}
             <div
-                className={`${(avatarsSrc.length > 4) ? "block" : "hidden"} text-primary-medium rounded-full px-1.5 bg-white ${stackedValueClass} self-center shadow-gray`}>
+                className={`${(avatarsSrc.length > 4) ? "block" : "hidden"} text-primary-medium rounded-full px-1.5 bg-white ${stackedValueClass[size!]} self-center shadow-gray`}>
                 +{avatarsSrc.length - 4} more
             </div>
         </div>
