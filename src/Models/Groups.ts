@@ -1,5 +1,6 @@
-export interface Group {
-    id: number;
+import { Entity } from "./Entity";
+
+export interface Group extends Entity {
     name: string;
     is_private: boolean;
     description: string;
