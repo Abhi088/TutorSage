@@ -16,7 +16,7 @@ export const userReducer: Reducer<UserState> = (
     switch (action.type) {
         case ME_FETCH:
         case ME_LOGIN:
-            return addOne<UserState>(state, action.payload);
+            return addOne(state, action.payload) as UserState;
         default:
             return state;
     }

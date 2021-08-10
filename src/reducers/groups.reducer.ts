@@ -25,7 +25,7 @@ export const groupReducer: Reducer<GroupState> = (
             const groups: Group[] = action.payload.groups;
             const groupIds = getIds(groups);
 
-            const newState = addMany<GroupState>(state, groups);
+            const newState = addMany(state, groups) as GroupState;
 
             return {
                 ...newState,
