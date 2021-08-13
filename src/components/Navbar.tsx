@@ -3,6 +3,8 @@ import { FC, memo } from 'react';
 import { logout } from '../APIs/auth';
 import Avatar from '../components/Avatar/Avatar';
 import LinkTo from '../components/LinkTo';
+import { pathSelector } from '../selectors/path.selectors';
+import { useAppSelector } from '../store';
 import Icons from './Icons/Icons';
 
 interface Props {
@@ -13,7 +15,8 @@ interface Props {
 const Navbar: FC<Props> = ({ profileImg, sidebarToggle }) => {
 
     const [showProfileMenu, setShowProfileMenu] = useState(false);
-    const path = window.location.pathname.split("/").splice(1).map((item, index) => item.substr(0, 1).toUpperCase() + item.substring(1)).join(" / ");
+
+    const showPath = useAppSelector(pathSelector).map((item, index) => item.substr(0, 1).toUpperCase() + item.substring(1)).join(" / ");
 
     return (
         <div className={`flex flex-col w-full sticky top-0`}>
@@ -39,7 +42,7 @@ const Navbar: FC<Props> = ({ profileImg, sidebarToggle }) => {
             </div>
             <div className={`flex flex-row items-center px-5 py-1.5 bg-white`}>
                 <Icons name="list" onClick={sidebarToggle} />
-                {path}
+                {showPath}
             </div>
         </div>
     );

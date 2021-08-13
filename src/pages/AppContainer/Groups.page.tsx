@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { FC, memo } from 'react';
 import { groupActions } from '../../actions/groups.actions';
+import { pathActions } from '../../actions/path.actions';
 import { fetchGroups } from '../../APIs/groups';
 import GroupData from '../../components/GroupData';
 import { groupQuerySelector, groupsFetchSelector } from '../../selectors/groups.selectors';
@@ -14,7 +15,9 @@ const Groups: FC<Props> = (props) => {
 
     const groups = useAppSelector(groupsFetchSelector);
 
+
     useEffect(() => {
+        pathActions.setPath(window.location.pathname.split("/").splice(1));
         fetchGroups({ status: "all-groups", query: query })
             .then((groups) => {
                 groupActions.fetch(groups!, query) // check this once

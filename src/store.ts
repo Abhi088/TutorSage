@@ -3,11 +3,13 @@ import { createStore, combineReducers } from "redux";
 import { userReducer } from "./reducers/users.reducer";
 import { groupReducer } from "./reducers/groups.reducer";
 import { authReducer } from "./reducers/auth.reducer";
+import { pathReducer } from "./reducers/path.reducer";
 
 const reducer = combineReducers({
     user: userReducer,
     groups: groupReducer,
-    auth: authReducer
+    auth: authReducer,
+    path: pathReducer
 });
 
 export const store = createStore(
