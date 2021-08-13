@@ -5,7 +5,7 @@ import { Meta } from '@storybook/react';
 import Icon from './Icons';
 import '../../index.css';
 
-const names = ["username", "password", "email", "cross"]
+const names = ["username", "password", "email", "cross", "list", "logo", "recording", "dashboard", "groups", "graph"]
 
 export const Icons = (args: any) => (
     <Icon {...args}></Icon>

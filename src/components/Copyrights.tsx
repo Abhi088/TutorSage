@@ -7,7 +7,7 @@ interface Props {
 
 const Copyrights: FC<Props> = ({ className }) => {
     return (
-        <p className={`${className}`}>&copy; 2020 All Rights Reserved. <LinkTo to="/" text="CODEBITS" /> is a product of Designreset. <LinkTo to="/cookiePreferences" text="Cookie Preferences" />, <LinkTo to="/privacy" text="Privacy" />, and <LinkTo to="/terms" text="Terms" />.</p>
+        <p className={`${className}`}>&copy; 2020 All Rights Reserved. <LinkTo to="/">CODEBITS</LinkTo> is a product of Designreset. <LinkTo to="/cookiePreferences">Cookie Preferences</LinkTo>, <LinkTo to="/privacy">Privacy</LinkTo>, and <LinkTo to="/terms">Terms</LinkTo>.</p>
     );
 };
 

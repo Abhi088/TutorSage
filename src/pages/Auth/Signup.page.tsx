@@ -54,7 +54,7 @@ const Signup: FC<Props> = (props) => {
             <div className="px-10 sm:px-0 flex flex-col justify-center min-h-screen space-y-16 mx-auto max-w-26rem">
                 <div className="space-y-3">
                     <h1 className="text-5xl font-light">Get started with a free account</h1>
-                    <h5 className="text-sm font-bold">Already have an account? <LinkTo to="/login" text="Log in" className="border-b border-primary-medium" /></h5>
+                    <h5 className="text-sm font-bold">Already have an account? <LinkTo to="/login" className="border-b border-primary-medium">Log in</LinkTo></h5>
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-6" method="POST">
                     <div className="space-y-12">
@@ -92,7 +92,7 @@ const Signup: FC<Props> = (props) => {
                     <div>
                         <div className="text-secondary-light space-x-3">
                             <input type="checkbox" name="termAgreement" />
-                            <label htmlFor="termAgreement">I agree to the <LinkTo to="/termsandconditions" text="terms and conditions" /></label>
+                            <label htmlFor="termAgreement">I agree to the <LinkTo to="/termsandconditions">terms and conditions</LinkTo></label>
                         </div>
                     </div>
                     <div className="flex flex-col sm:flex:row space-y-8 sm:space-y-0 justify-between">

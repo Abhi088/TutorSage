@@ -1,4 +1,5 @@
 import React from "react";
+import Spinner from "../Spinner/Spinner";
 
 interface Props extends React.HTMLProps<HTMLButtonElement> {
     buttonDisabled?: boolean;
@@ -46,7 +47,7 @@ const Button: React.FC<Props> = ({
                 type="submit"
                 className={`rounded-4px ${sizeClasses[buttonSize!]} ${themeClasses[buttonStyle!][theme!]} ${className}`}
             >
-                {text}
+                {(buttonDisabled ? <Spinner type="button" /> : text)}
             </button>
         </div>
     );

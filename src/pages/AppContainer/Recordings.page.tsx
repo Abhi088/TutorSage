@@ -1,13 +1,11 @@
 import { FC, memo } from 'react';
-import { Link } from 'react-router-dom';
 
 interface Props { }
 
 const Recordings: FC<Props> = (props) => {
     return (
-        <div>
+        <div className={`appContainer_min_height flex items-center mx-auto`}>
             This is Recordings page.
-            <Link to="/dashboard"><span className="underline text-blue-500">Go to Dashboard</span></Link>
         </div>
     );
 };

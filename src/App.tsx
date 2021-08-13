@@ -8,6 +8,7 @@ import { me } from './APIs/auth'; //updateMe import
 import { authActions } from './actions/auth.actions';
 import { useAppSelector } from './store';
 import { meSelector } from './selectors/user.selectors';
+import Spinner from './components/Spinner/Spinner';
 
 interface Props { }
 
@@ -27,11 +28,11 @@ const App: FC<Props> = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!user && token) {
-    return <div>Ruko Zara, Sabr Kar</div>
+    return <Spinner />
   }
 
   return (
-    <Suspense fallback={<div className="text-red-500">Ruko Jara, Sabr Karo</div>}>
+    <Suspense fallback={<Spinner />}>
       <BrowserRouter>
         <Switch>
           <Route path="/" exact>
@@ -40,7 +41,7 @@ const App: FC<Props> = () => {
           <Route path={["/login", "/signup"]} exact>
             {user ? <Redirect to="/dashboard" /> : <AuthLazy />}
           </Route>
-          <Route path={["/dashboard", "/recordings", "/profile", "/batch/:batchNumber/lecture/:lectureNumber"]}>
+          <Route path={["/dashboard", "/groups", "/recordings", "/profile", "/batch/:batchNumber/lecture/:lectureNumber"]}>
             {user ? <AppContainerLazy /> : <Redirect to="/login" />}
           </Route>
           <Route>

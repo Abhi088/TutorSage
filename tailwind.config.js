@@ -55,6 +55,9 @@ module.exports = {
         '4.5': '18px',
         '14': '56px'
       },
+      margin: {
+        '26': '104px'
+      },
       fontSize: {
         '2xs': '0.5rem'
       },
