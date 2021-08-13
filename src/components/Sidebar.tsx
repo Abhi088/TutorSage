@@ -16,7 +16,7 @@ const Sidebar: FC<Props> = ({ isVisible }) => {
     const linkClasses = "hover:bg-gray-300 rounded-lg  px-2 py-2";
 
     return (
-        <div className={`bg-gray-100 w-64 ${(isVisible) ? "" : "hidden"} fixed appContainer_min_height`}>
+        <div className={`bg-gray-100 w-64 ${(isVisible) ? "" : "hidden"}`}>
             <ul className={`space-y-3.5 mt-5`} >
                 <li className={`${linkClasses}`}>
                     <LinkTo to="/dashboard" type="icon">
