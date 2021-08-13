@@ -18,7 +18,7 @@ const LinkTo: FC<Props> = ({ to, className, type, children, onClick }) => {
             </Link>
         );
     else return (
-        <Link to={to} className={`flex flex-row font-semibold items-center space-x-5 ${className}`} onClick={onClick}>
+        <Link to={to} className={`flex flex-row font-semibold items-center ${className}`} onClick={onClick}>
             {children}
         </Link >
     );

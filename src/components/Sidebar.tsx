@@ -1,7 +1,6 @@
 import { FC, memo } from 'react';
 import { logout } from '../APIs/auth';
-import Icons from './Icons/Icons';
-import LinkTo from './LinkTo';
+import SidebarButton from './SidebarButton';
 // import { meSelector } from '../selectors/user.selectors';
 // import { useAppSelector } from '../store';
 
@@ -13,44 +12,17 @@ const Sidebar: FC<Props> = ({ isVisible }) => {
 
     // const user = useAppSelector(meSelector);
 
-    const linkClasses = "hover:bg-gray-300 rounded-lg  px-2 py-2";
-
     return (
-        <div className={`bg-gray-100 w-64 ${(isVisible) ? "" : "hidden"}`}>
+        <div className={`bg-gray-100 w-72 ${(isVisible) ? "" : "hidden"} p-3`}>
             <ul className={`space-y-3.5 mt-5`} >
-                <li className={`${linkClasses}`}>
-                    <LinkTo to="/dashboard" type="icon">
-                        <Icons name="dashboard" className={`mr-3`} />
-                        Dashboard
-                    </LinkTo>
-                </li>
-                <li className={`${linkClasses}`}>
-                    <LinkTo to="/recordings" type="icon">
-                        <Icons name="recording" className={`mr-3`} />
-                        Recordings
-                    </LinkTo>
-                </li>
-                <li className={`${linkClasses}`}>
-                    <LinkTo to="/groups" type="icon">
-                        <Icons name="groups" className={`mr-3`} />
-                        Groups
-                    </LinkTo>
-                </li>
-                <li className={`${linkClasses}`}>
-                    <LinkTo to="/student/report" type="icon" >
-                        <Icons name="graph" className={`mr-3`} />
-                        Student Report
-                    </LinkTo>
-                </li>
-                <li className={`${linkClasses}`}>
-                    <LinkTo to="" type="icon" onClick={() => {
-                        logout();
-                        window.location.href = "/login";
-                    }}>
-                        <Icons name="logout" className={`mr-3`} />
-                        Logout
-                    </LinkTo>
-                </li>
+                <SidebarButton name="dashboard" iconName="dashboard" link="/dashboard" />
+                <SidebarButton name="recordings" iconName="recording" link="/recordings" />
+                <SidebarButton name="groups" iconName="groups" link="/groups" />
+                <SidebarButton name="Student Report" iconName="graph" link="/student/report" />
+                <SidebarButton name="logout" iconName="logout" link="" onClick={() => {
+                    logout();
+                    window.location.href = "/login";
+                }} />
             </ul>
         </div >
     );
