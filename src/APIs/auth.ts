@@ -1,5 +1,5 @@
 import axios from "axios";
-import { User } from "../Models/User";
+import { User, UserChangeAble } from "../Models/User";
 import { BASE_URL, LS_AUTH_TOKEN } from "../Constants/constants";
 import { axiosRequest, axiosResponse } from "../Axios/axios";
 
@@ -43,9 +43,18 @@ export const me = () => {
     return axios.get<MeResponse>(url).then((response) => response.data.data);
 };
 
-export const updateMe = () => {
-    const url = BASE_URL + "/me";
-    return axios
-        .patch(url, { first_name: "kuch bhi" })
-        .then((response) => response.data.data);
+// export const updateMe = () => {
+//     const url = BASE_URL + "/me";
+//     return axios
+//         .patch(url, { first_name: "kuch bhi" })
+//         .then((response) => response.data.data);
+// };
+
+export const updateUser = async (data: UserChangeAble) => {
+    try {
+        const update = await axios.put(`${BASE_URL}/me`, data);
+        return update;
+    } catch (error) {
+        console.log("Not able to patch the information!");
+    }
 };

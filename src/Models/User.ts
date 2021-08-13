@@ -1,11 +1,29 @@
 import { Entity } from "./Entity";
 
-export interface User extends Entity {
+export interface UserChangeAble {
+    first_name?: string;
+    middle_name?: string;
+    last_name?: string;
+    profile_pic_url?: string;
+    phone_number?: string;
+    alternate_phone_number?: string;
+    email?: string;
+    gender?: string;
+    birth_year?: string;
+    birth_month?: string;
+    birth_date?: string;
+    death_year?: string;
+    death_month?: string;
+    death_date?: string;
+    home_state_code?: string;
+    party?: string;
+    education?: string;
+    hometown?: string;
+}
+
+export interface User extends Entity, UserChangeAble {
     __type: string;
     guid: null;
-    first_name: string;
-    middle_name: string;
-    last_name: string;
     role: "staff" | "admin";
     status: string;
     profile_pic_url: string;
@@ -13,21 +31,10 @@ export interface User extends Entity {
     legal_name: string;
     nick_name: string;
     job_type: string;
-    phone_number: string;
-    alternate_phone_number: string;
-    gender: string;
-    birth_year: string;
-    birth_month: string;
-    birth_date: string;
-    death_year: string;
-    death_month: string;
-    death_date: string;
     urls: any[];
     last_invited_to_platform_at: null;
-    education: string;
     hometown: string;
     state_code: string;
-    home_state_code: null;
     meta: Meta;
     is_2fa_enabled: boolean;
     default_2fa_type: string;
