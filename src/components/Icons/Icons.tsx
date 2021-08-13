@@ -19,7 +19,7 @@ const Icon: FC<Props> = ({ className, name, onClick }) => {
             </svg>
         );
         case "email": return (
-            <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 text-primary-dark fill-primary-light ${className}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" onClick={onClick}>
+            <svg xmlns="http://www.w3.org/2000/svg" className={`w-6 text-primary-dark fill-primary-light ${className}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" onClick={onClick}>
                 <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
                 <circle cx="12" cy="12" r="4"></circle>
             </svg>
@@ -31,13 +31,13 @@ const Icon: FC<Props> = ({ className, name, onClick }) => {
             </svg>
         );
         case "cross": return (
-            <svg xmlns="http://www.w3.org/2000/svg" className={`w-5 h-5 stroke-current stroke-2 ${className}`} viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" data-dismiss="alert" onClick={onClick}>
+            <svg xmlns="http://www.w3.org/2000/svg" className={`w-5 h-5 stroke-current stroke-2 ${className}`} viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round" data-dismiss="alert" onClick={onClick}>
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
         );
         case "list": return (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className={`rounded-full cursor-pointer hover:bg-gray-200 h-10 w-10 px-2.5 ${className}`} onClick={onClick}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`rounded-full cursor-pointer hover:bg-gray-200 h-10 w-10 px-2.5 ${className}`} onClick={onClick}>
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -54,28 +54,28 @@ const Icon: FC<Props> = ({ className, name, onClick }) => {
             </svg>
         );
         case "recording": return (
-            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
+            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
                 <path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-6l-7 4V7z"></path>
             </svg>
         );
         case "dashboard": return (
-            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
+            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
                 <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path>
             </svg>
         );
         case "groups": return (
-            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
+            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
                 <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
             </svg>
         );
         case "graph": return (
-            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
-                <path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"></path>
+            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
+                <path fillRule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"></path>
             </svg>
         );
         case "logout": return (
-            <svg className={`${className}`} stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1.75em" width="1.75em" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+            <svg className={`${className}`} stroke="currentColor" fill="none" strokeWidth="0" viewBox="0 0 24 24" height="1.75em" width="1.75em" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
                 </path>
             </svg>
         );
