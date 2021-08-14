@@ -6,10 +6,10 @@ import { axiosRequest, axiosResponse } from "../Axios/axios";
 axiosRequest();
 axiosResponse();
 
-interface GroupRequest {
+export interface GroupRequest {
     limit?: number;
     offset?: number;
-    query?: string;
+    query: string;
     status: "all-groups";
 }
 

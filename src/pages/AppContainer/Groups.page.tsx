@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { FC, memo } from 'react';
-import { groupActions } from '../../actions/groups.actions';
-import { pathActions } from '../../actions/path.actions';
-import { fetchGroups } from '../../APIs/groups';
+// import { pathActions } from '../../actions/path.actions';
+import { fetchGroups } from '../../middlewares/groups.middleware';
 import GroupData from '../../components/GroupData';
-import { groupQuerySelector, groupsFetchSelector } from '../../selectors/groups.selectors';
+import { groupLoadingSelector, groupQuerySelector, groupsFetchSelector } from '../../selectors/groups.selectors';
 import { useAppSelector } from '../../store';
+import Spinner from '../../components/Spinner/Spinner';
+// import { groupActions } from '../../actions/groups.actions';
 
 interface Props { }
 
@@ -13,28 +14,33 @@ const Groups: FC<Props> = (props) => {
 
     const query = useAppSelector(groupQuerySelector);
 
+    const loading = useAppSelector(groupLoadingSelector);
+
     const groups = useAppSelector(groupsFetchSelector);
 
-
-    useEffect(() => {
-        pathActions.setPath(window.location.pathname.split("/").splice(1));
-        fetchGroups({ status: "all-groups", query: query })
-            .then((groups) => {
-                groupActions.fetch(groups!, query) // check this once
-            })
-    }, [query]); //eslint-disable-line react-hooks/exhaustive-deps
+    // useEffect(() => {
+    //     pathActions.setPath(window.location.pathname.split("/").splice(1));
+    //     fetchGroups({ status: "all-groups", query: query })
+    //         .then((groups) => {
+    //             groupActions.fetch(groups!, query) // check this once
+    //         })
+    // }, [query]); //eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="m-auto appContainer_min_height">
-            <input
-                type="text"
-                placeholder="Search Groups"
-                className="w-2/3 border-2 border-black"
-                value={query}
-                onChange={(event) => {
-                    groupActions.query(event.target.value)
-                }}
-            />
+            <div className="flex flex-row items-center">
+                <input
+                    type="text"
+                    placeholder="Search Groups"
+                    className="w-2/3 border-2 border-black"
+                    value={query}
+                    onChange={(event) => {
+                        // groupActions.query(event.target.value);
+                        fetchGroups({ query: event.target.value, status: "all-groups" });
+                    }}
+                />
+                {loading && <Spinner type="button" />}
+            </div>
             {groups.map((group, index) => {
                 return (<div
                     key={group.id}>

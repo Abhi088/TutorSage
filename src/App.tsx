@@ -4,8 +4,7 @@ import { LS_AUTH_TOKEN } from './Constants/constants';
 import AppContainerLazy from './pages/AppContainer/AppContainer.lazy';
 import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
-import { me } from './APIs/auth'; //updateMe import
-import { authActions } from './actions/auth.actions';
+import { me } from './middlewares/auth.middleware';
 import { useAppSelector } from './store';
 import { meSelector } from './selectors/user.selectors';
 import Spinner from './components/Spinner/Spinner';
@@ -19,12 +18,9 @@ const App: FC<Props> = () => {
   const token = localStorage.getItem(LS_AUTH_TOKEN);
 
   useEffect(() => {
-    // updateMe();
     if (!token) return;
 
-    me().then((u) => {
-      authActions.fetch(u);
-    });
+    me();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!user && token) {

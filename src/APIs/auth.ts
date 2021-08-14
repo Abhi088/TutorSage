@@ -40,15 +40,9 @@ interface MeResponse {
 
 export const me = () => {
     const url = BASE_URL + "/me";
-    return axios.get<MeResponse>(url).then((response) => response.data.data);
+    return axios.get<MeResponse>(url)
+        .then((response) => response.data.data);
 };
-
-// export const updateMe = () => {
-//     const url = BASE_URL + "/me";
-//     return axios
-//         .patch(url, { first_name: "kuch bhi" })
-//         .then((response) => response.data.data);
-// };
 
 export const updateUser = async (data: UserChangeAble) => {
     try {

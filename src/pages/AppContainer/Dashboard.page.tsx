@@ -13,8 +13,8 @@ const Dashboard: FC<Props> = (props) => {
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
 
     return (
-        <div className="ml-64 flex items-center appContainer_min_height">
-            <div className="m-auto">Welcome {user?.first_name}</div>
+        <div className="mx-auto flex items-center appContainer_min_height">
+            <div className="">Welcome {user?.first_name}</div>
         </div>
     );
 };

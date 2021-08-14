@@ -5,6 +5,8 @@ import { createSelector } from 'reselect';
 export const groupQuerySelector = createSelector([groupStateSelector], (groupState) => groupState.query);
 export const groupQueryMapSelector = createSelector([groupStateSelector], (groupState) => groupState.queryMap);
 export const groupByIdSelector = createSelector([groupStateSelector], (groupState) => groupState.byId);
+export const groupLoadingQuerySelector = createSelector([groupStateSelector], (groupState) => groupState.loadingQuery);
+export const groupLoadingSelector = createSelector([groupQuerySelector, groupLoadingQuerySelector], (groupQuery, groupLoadingQuery) => groupLoadingQuery[groupQuery])
 
 export const groupsFetchSelector = createSelector([
     groupQuerySelector,
