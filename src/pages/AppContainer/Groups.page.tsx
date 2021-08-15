@@ -1,9 +1,10 @@
 import { FC, memo } from 'react';
 import GroupData from '../../components/GroupData';
-import { groupQuerySelector, groupsFetchSelector } from '../../selectors/groups.selectors';
+import { groupLoadingSelector, groupQuerySelector, groupsFetchSelector } from '../../selectors/groups.selectors';
 import { useAppSelector } from '../../store';
 import { useDispatch } from 'react-redux';
 import { groupsQueryAction } from '../../actions/groups.actions';
+import Spinner from '../../components/Spinner/Spinner';
 
 interface Props { }
 
@@ -11,7 +12,7 @@ const Groups: FC<Props> = (props) => {
 
     const query = useAppSelector(groupQuerySelector);
 
-    //const loading = useAppSelector(groupLoadingSelector);
+    const loading = useAppSelector(groupLoadingSelector);
 
     const groups = useAppSelector(groupsFetchSelector);
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const Groups: FC<Props> = (props) => {
                         dispatch(groupsQueryAction(event.target.value));
                     }}
                 />
-                {/* {loading && <Spinner type="button" />} */}
+                {loading && <Spinner type="button" />}
             </div>
             {groups.map((group, index) => {
                 return (<div
