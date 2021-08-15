@@ -6,7 +6,7 @@ import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
 import { me } from './APIs/auth';
 import { useAppSelector } from './store';
-import { meSelector } from './selectors/user.selectors';
+import { meSelector } from './selectors/me.selectors';
 import Spinner from './components/Spinner/Spinner';
 import { authActions } from './actions/auth.actions';
 
@@ -38,7 +38,7 @@ const App: FC<Props> = () => {
           <Route path={["/login", "/signup"]} exact>
             {user ? <Redirect to="/dashboard" /> : <AuthLazy />}
           </Route>
-          <Route path={["/dashboard", "/groups", "/recordings", "/profile", "/batch/:batchNumber/lecture/:lectureNumber"]}>
+          <Route path={["/dashboard", "/groups", "/recordings", "/profile", "/batch/:batchNumber/lecture/:lectureNumber", "/users"]}>
             {user ? <AppContainerLazy /> : <Redirect to="/login" />}
           </Route>
           <Route>

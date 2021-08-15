@@ -11,7 +11,7 @@ import { pathActions } from '../../../actions/path.actions';
 interface Props { }
 
 const EditProfile: FC<Props> = (props) => {
-    const user = useAppSelector((state) => state.user.byId[state.auth.id!]);
+    const user = useAppSelector((state) => state.me.byId[state.auth.id!]);
 
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
 

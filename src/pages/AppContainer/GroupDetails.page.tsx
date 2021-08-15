@@ -9,7 +9,7 @@ import { useAppSelector } from '../../store';
 
 interface Props { }
 
-const GroupDetailsPage: FC<Props> = (props) => {
+const GroupDetails: FC<Props> = (props) => {
 
     const groupId = +useParams<{ groupId: string }>().groupId;
 
@@ -21,7 +21,7 @@ const GroupDetailsPage: FC<Props> = (props) => {
 
     useEffect(() => {
         dispatch(groupQueryOneAction(groupId));
-    }, [groupId]);
+    }, [groupId]); //eslint-disable-line react-hooks/exhaustive-deps
 
     if (!group) {
         return <Spinner />
@@ -35,6 +35,6 @@ const GroupDetailsPage: FC<Props> = (props) => {
     );
 };
 
-GroupDetailsPage.defaultProps = {};
+GroupDetails.defaultProps = {};
 
-export default memo(GroupDetailsPage);
+export default memo(GroupDetails);

@@ -18,7 +18,7 @@ const Sidebar: FC<Props> = ({ isVisible }) => {
                 <SidebarButton name="dashboard" iconName="dashboard" link="/dashboard" />
                 <SidebarButton name="recordings" iconName="recording" link="/recordings" />
                 <SidebarButton name="groups" iconName="groups" link="/groups" />
-                <SidebarButton name="Student Report" iconName="graph" link="/student/report" />
+                <SidebarButton name="users" iconName="graph" link="/users" />
                 <SidebarButton name="logout" iconName="logout" link="" onClick={() => {
                     logout();
                     window.location.href = "/login";

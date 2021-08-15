@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { FC, memo } from 'react';
 import { pathActions } from '../../actions/path.actions';
-import { meSelector } from '../../selectors/user.selectors';
+import { meSelector } from '../../selectors/me.selectors';
 import { useAppSelector } from '../../store';
 
 interface Props { }

@@ -16,7 +16,7 @@ const initialState = {
     loadingQuery: {},
 };
 
-export const groupReducer: Reducer<GroupState> = (
+export const groupsReducer: Reducer<GroupState> = (
     state = initialState,
     action
 ) => {

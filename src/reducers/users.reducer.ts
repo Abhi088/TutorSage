@@ -1,22 +1,33 @@
 import { Reducer } from "redux";
-import { ME_FETCH, ME_LOGIN } from "../actions/actions.constants";
+import { USERS_FETCH, USER_FETCH_ONE } from "../actions/actions.constants";
 import { User } from "../Models/User";
-import { addOne, EntityState } from "./entity.reducer";
+import { addMany, addOne, EntityState, getIds } from "./entity.reducer";
 
-export interface UserState extends EntityState<User> { };
+export interface UserState extends EntityState<User> {
+    usersId: number[]
+}
 
 const initialState = {
     byId: {},
+    usersId: []
 };
 
-export const userReducer: Reducer<UserState> = (
+export const usersReducer: Reducer<UserState> = (
     state = initialState,
     action
 ) => {
     switch (action.type) {
-        case ME_FETCH:
-        case ME_LOGIN:
-            return addOne(state, action.payload) as UserState;
+        case USERS_FETCH:
+            const users: User[] = action.payload;
+            const usersId = getIds(users);
+            console.log(usersId)
+            const newState = addMany(state, users) as UserState;
+
+            return {
+                ...newState,
+                usersId: usersId
+            }
+        case USER_FETCH_ONE: return addOne(state, action.payload) as UserState;
         default:
             return state;
     }

@@ -9,15 +9,17 @@ import Navbar from '../../components/Navbar';
 import { lazy } from "react";
 import { useAppSelector } from '../../store';
 import GroupDetailsPage from './GroupDetails.page';
+import UsersPage from './Users/Users.page';
+import UserDetailsPage from './Users/UserDetails.page';
 
-const UserLazy = lazy(() => import("./User/User.page"));
+const UserLazy = lazy(() => import("./Me/User.page"));
 
 interface Props {
 }
 
 const AppContainer: FC<Props> = (props) => {
 
-    const user = useAppSelector((state) => state.user.byId[state.auth.id!]);
+    const user = useAppSelector((state) => state.me.byId[state.auth.id!]);
     const [showSidebar, setShowSidebar] = useState(true);
 
     return (
@@ -38,6 +40,13 @@ const AppContainer: FC<Props> = (props) => {
                     <Route path='/groups/:groupId' exact>
                         <GroupDetailsPage></GroupDetailsPage>
                     </Route>
+                    <Route path="/users" exact>
+                        <UsersPage></UsersPage>
+                    </Route>
+                    <Route path="/users/:userId" exact>
+                        <UserDetailsPage></UserDetailsPage>
+                    </Route>
+
                     <Route path="/batch/:batchNumber/lecture/:lectureNumber">
                         <LecturePage></LecturePage>
                     </Route>
