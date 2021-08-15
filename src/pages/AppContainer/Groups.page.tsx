@@ -1,12 +1,9 @@
-// import { useEffect } from 'react';
 import { FC, memo } from 'react';
-// import { pathActions } from '../../actions/path.actions';
-import { fetchGroups } from '../../middlewares/groups.middleware';
 import GroupData from '../../components/GroupData';
-import { groupLoadingSelector, groupQuerySelector, groupsFetchSelector } from '../../selectors/groups.selectors';
+import { groupQuerySelector, groupsFetchSelector } from '../../selectors/groups.selectors';
 import { useAppSelector } from '../../store';
-import Spinner from '../../components/Spinner/Spinner';
-// import { groupActions } from '../../actions/groups.actions';
+import { useDispatch } from 'react-redux';
+import { groupsQueryAction } from '../../actions/groups.actions';
 
 interface Props { }
 
@@ -14,17 +11,10 @@ const Groups: FC<Props> = (props) => {
 
     const query = useAppSelector(groupQuerySelector);
 
-    const loading = useAppSelector(groupLoadingSelector);
+    //const loading = useAppSelector(groupLoadingSelector);
 
     const groups = useAppSelector(groupsFetchSelector);
-
-    // useEffect(() => {
-    //     pathActions.setPath(window.location.pathname.split("/").splice(1));
-    //     fetchGroups({ status: "all-groups", query: query })
-    //         .then((groups) => {
-    //             groupActions.fetch(groups!, query) // check this once
-    //         })
-    // }, [query]); //eslint-disable-line react-hooks/exhaustive-deps
+    const dispatch = useDispatch();
 
     return (
         <div className="m-auto appContainer_min_height">
@@ -35,11 +25,10 @@ const Groups: FC<Props> = (props) => {
                     className="w-2/3 border-2 border-black"
                     value={query}
                     onChange={(event) => {
-                        // groupActions.query(event.target.value);
-                        fetchGroups({ query: event.target.value, status: "all-groups" });
+                        dispatch(groupsQueryAction(event.target.value));
                     }}
                 />
-                {loading && <Spinner type="button" />}
+                {/* {loading && <Spinner type="button" />} */}
             </div>
             {groups.map((group, index) => {
                 return (<div

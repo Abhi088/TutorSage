@@ -4,10 +4,11 @@ import { LS_AUTH_TOKEN } from './Constants/constants';
 import AppContainerLazy from './pages/AppContainer/AppContainer.lazy';
 import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
-import { me } from './middlewares/auth.middleware';
+import { me } from './APIs/auth';
 import { useAppSelector } from './store';
 import { meSelector } from './selectors/user.selectors';
 import Spinner from './components/Spinner/Spinner';
+import { authActions } from './actions/auth.actions';
 
 interface Props { }
 
@@ -20,7 +21,7 @@ const App: FC<Props> = () => {
   useEffect(() => {
     if (!token) return;
 
-    me();
+    me().then((u) => authActions.fetch(u));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!user && token) {
