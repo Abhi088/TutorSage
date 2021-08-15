@@ -1,14 +1,18 @@
-import { FC, memo } from 'react';
+import { FC, memo, useEffect } from 'react';
 import GroupData from '../../components/GroupData';
 import { groupLoadingSelector, groupQuerySelector, groupsFetchSelector } from '../../selectors/groups.selectors';
 import { useAppSelector } from '../../store';
 import { useDispatch } from 'react-redux';
 import { groupsQueryAction } from '../../actions/groups.actions';
 import Spinner from '../../components/Spinner/Spinner';
+import { pathActions } from '../../actions/path.actions';
 
 interface Props { }
 
 const Groups: FC<Props> = (props) => {
+
+    useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
+
 
     const query = useAppSelector(groupQuerySelector);
 

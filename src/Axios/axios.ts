@@ -1,4 +1,6 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+import { CANCEL } from "redux-saga";
+// import { CANCEL } from "redux-saga";
 import { LS_AUTH_TOKEN } from "../Constants/constants";
 
 export const axiosRequest = () => {
@@ -23,4 +25,13 @@ export const axiosResponse = () => {
         }
         return Promise.reject(error);
     });
+}
+
+export const get = <T>(url: string, config?: AxiosRequestConfig) => {
+
+    const source = axios.CancelToken.source();
+
+    const response = axios.get<T>(url, { ...config, cancelToken: source.token });
+    response[CANCEL] = source.cancel;
+    return response;
 }
