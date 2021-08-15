@@ -8,6 +8,7 @@ import LecturePage from './Lecture.page';
 import Navbar from '../../components/Navbar';
 import { lazy } from "react";
 import { useAppSelector } from '../../store';
+import GroupDetailsPage from './GroupDetails.page';
 
 const UserLazy = lazy(() => import("./User/User.page"));
 
@@ -31,8 +32,11 @@ const AppContainer: FC<Props> = (props) => {
                     <Route path='/recordings'>
                         <RecordingsPage></RecordingsPage>
                     </Route>
-                    <Route path='/groups'>
+                    <Route path='/groups' exact>
                         <GroupsPage></GroupsPage>
+                    </Route>
+                    <Route path='/groups/:groupId' exact>
+                        <GroupDetailsPage></GroupDetailsPage>
                     </Route>
                     <Route path="/batch/:batchNumber/lecture/:lectureNumber">
                         <LecturePage></LecturePage>

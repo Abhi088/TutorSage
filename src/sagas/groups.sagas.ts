@@ -1,15 +1,21 @@
-import { takeLatest, call, put, delay } from "@redux-saga/core/effects";
+import { takeEvery, takeLatest, call, put, delay } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
-import { GROUPS_QUERY } from "../actions/actions.constants";
-import { groupsFetchAction } from "../actions/groups.actions";
-import { fetchGroups } from "../APIs/groups";
+import { GROUP_QUERY_ONE, GROUPS_QUERY } from "../actions/actions.constants";
+import { groupFetchOneAction, groupsFetchAction } from "../actions/groups.actions";
+import { fetchGroups, fetchOneGroup } from "../APIs/groups";
 
-export function* groupsFetch(action: AnyAction): Generator<any> {
+function* groupsFetch(action: AnyAction): Generator<any> {
     yield delay(1000);
     const groupsResponse: any = yield call(fetchGroups, { query: action.payload, status: "all-groups" });
     yield put(groupsFetchAction(groupsResponse.data.data, action.payload));
 }
 
+function* groupFetchOne(action: AnyAction): Generator<any> {
+    const groupResponse: any = yield call(fetchOneGroup, action.payload);
+    yield put(groupFetchOneAction(groupResponse.data.data));
+}
+
 export function* watchGroupQueryChanged() {
     yield takeLatest(GROUPS_QUERY, groupsFetch);
+    yield takeEvery(GROUP_QUERY_ONE, groupFetchOne);
 }

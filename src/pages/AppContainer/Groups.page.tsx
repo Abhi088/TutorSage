@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { groupsQueryAction } from '../../actions/groups.actions';
 import Spinner from '../../components/Spinner/Spinner';
 import { pathActions } from '../../actions/path.actions';
+import LinkTo from '../../components/LinkTo';
 
 interface Props { }
 
@@ -36,9 +37,10 @@ const Groups: FC<Props> = (props) => {
                 {loading && <Spinner type="button" />}
             </div>
             {groups.map((group, index) => {
-                return (<div
-                    key={group.id}>
-                    <GroupData className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`} name={group.name} desc={group.description} imgSrc={group.group_image_url}></GroupData>
+                return (<div key={group.id}>
+                    <LinkTo to={`/groups/${group.id}`}>
+                        <GroupData className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`} name={group.name} desc={group.description} imgSrc={group.group_image_url}></GroupData>
+                    </LinkTo>
                 </div>);
             })}
         </div>

@@ -1,8 +1,7 @@
 import { Group } from "../Models/Groups";
-// import axios from "axios";
+import axios from "axios";
 import { BASE_URL } from "../Constants/constants";
 import { axiosRequest, axiosResponse, get } from "../Axios/axios";
-import { CancelToken } from "axios";
 
 axiosRequest();
 axiosResponse();
@@ -18,10 +17,16 @@ interface GroupResponse {
     data: Group[];
 }
 
-export const fetchGroups = (data: GroupRequest, token?: CancelToken) => {
+export const fetchGroups = (data: GroupRequest) => {
     const url = BASE_URL + "/groups";
 
-    return get<GroupResponse>(url, { params: data, cancelToken: token });
+    return get<GroupResponse>(url, { params: data });
     // .then((response) => { return response.data.data })
     // .catch((e) => console.log(e));
+}
+
+export const fetchOneGroup = (id: string) => {
+    const url = BASE_URL + "/groups/" + id;
+
+    return axios.get<GroupResponse>(url);
 }
