@@ -5,8 +5,9 @@ import { useAppSelector } from '../../../store';
 import * as yup from 'yup';
 import Button from '../../../components/Button/Button';
 import EditInput from '../../../components/EditInput';
-import { updateUser } from '../../../APIs/auth';
 import { pathActions } from '../../../actions/path.actions';
+import { useDispatch } from 'react-redux';
+import { meUpdateAction } from '../../../actions/auth.actions';
 
 interface Props { }
 
@@ -14,6 +15,8 @@ const EditProfile: FC<Props> = (props) => {
     const user = useAppSelector((state) => state.auth.byId[state.auth.id!]);
 
     useEffect(() => { pathActions.setPath(window.location.pathname.split("/").splice(1)); })
+
+    const dispatch = useDispatch();
 
     let day = [];
     let month = [];
@@ -73,10 +76,7 @@ const EditProfile: FC<Props> = (props) => {
                 home_state_code: yup.string()
             }),
             onSubmit: (data) => {
-                updateUser(data).then((response) => {
-                    console.log(response?.data);
-                    window.location.href = "/dashboard";
-                });
+                dispatch(meUpdateAction(data));
             }
         });
 

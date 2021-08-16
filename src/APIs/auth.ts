@@ -41,12 +41,11 @@ interface MeResponse {
 export const me = () => {
     const url = BASE_URL + "/me";
     return axios.get<MeResponse>(url);
-    // .then((response) => response.data.data);
 };
 
-export const updateUser = async (data: MeChangeAble) => {
+export const updateMe = (data: MeChangeAble) => {
     try {
-        const update = await axios.put(`${BASE_URL}/me`, data);
+        const update = axios.put(`${BASE_URL}/me`, data);
         return update;
     } catch (error) {
         console.log("Not able to patch the information!");
