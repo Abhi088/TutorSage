@@ -11,8 +11,8 @@ function* usersFetch(action: AnyAction): Generator<any> {
 }
 
 function* userFetchOne(action: AnyAction): Generator<any> {
-    const groupResponse: any = yield call(fetchOneUser, action.payload);
-    yield put(userFetchOneAction(groupResponse.data.data));
+    const userResponse: any = yield call(fetchOneUser, action.payload);
+    yield put(userFetchOneAction(userResponse.data.data));
 }
 
 export function* watchUserQueryChanged() {

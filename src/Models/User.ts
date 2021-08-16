@@ -1,55 +1,123 @@
 import { Entity } from "./Entity";
 
-export interface UserChangeAble {
-    first_name?: string;
-    middle_name?: string;
-    last_name?: string;
-    profile_pic_url?: string;
-    phone_number?: string;
-    alternate_phone_number?: string;
-    email?: string;
-    gender?: string;
-    birth_year?: string;
-    birth_month?: string;
-    birth_date?: string;
-    death_year?: string;
-    death_month?: string;
-    death_date?: string;
-    home_state_code?: string;
-    party?: string;
-    education?: string;
-    hometown?: string;
-}
-
-export interface User extends Entity, UserChangeAble {
+export interface User extends Entity {
     __type: string;
     guid: null;
-    role: "staff" | "admin";
+    first_name: string;
+    middle_name: null;
+    last_name: string;
+    role: string;
     status: string;
     profile_pic_url: string;
     email: string;
-    legal_name: string;
-    nick_name: string;
-    job_type: string;
+    bio: string;
+    legal_name: null;
+    nick_name: null;
+    job_type: null;
+    phone_number: string;
+    alternate_phone_number: null;
+    gender: null;
+    birth_year: null;
+    birth_month: null;
+    birth_date: null;
+    death_year: null;
+    death_month: null;
+    death_date: null;
     urls: any[];
     last_invited_to_platform_at: null;
-    hometown: string;
-    state_code: string;
+    education: null;
+    hometown: null;
+    state_code: null;
+    home_state_code: null;
     meta: Meta;
     is_2fa_enabled: boolean;
     default_2fa_type: string;
     created_at: Date;
     updated_at: Date;
-    is_zoom_connected: boolean;
+    recentOccupation: RecentOccupation;
+    recentEducation: RecentEducation;
     person: Person;
-    educations: Education[];
-    occupations: Occupation[];
-    blockedUsers: any[];
-    memberToAdvocatePages: any[];
-    ownerToAdvocatePages: any[];
+    isMyContact: boolean;
 }
 
-export interface Education {
+export interface Meta {
+    "2fa": The2Fa;
+    onboarding_feed: boolean;
+    onboarding_events: boolean;
+    onboarding_groups: boolean;
+}
+
+export interface The2Fa {
+    totp_code: boolean;
+    email_code: boolean;
+    phone_code: boolean;
+    backup_code: boolean;
+    is_number_verified: boolean;
+}
+
+export interface Person {
+    id: number;
+    party: string;
+    job_type: null;
+    chamber: null;
+    created_at: Date;
+    updated_at: Date;
+    committees: PersonCommittees;
+    issues: Issue[];
+    legMember: null;
+    legOffice: null;
+}
+
+export interface PersonCommittees {
+    caucuses: Caucus[];
+    committees: CommitteesCommittees;
+}
+
+export interface Caucus {
+    id: number;
+    parent_id: null;
+    chamber_id: number;
+    role: string;
+    state_code: string;
+    category: string;
+    display_name: string;
+    urls: Urls;
+    created_at: Date;
+    updated_at: Date;
+    __type: string;
+    memberRole: string;
+}
+
+export interface Urls {
+}
+
+export interface CommitteesCommittees {
+    parentCommittees: ParentCommittees;
+    subCommittees: any[];
+}
+
+export interface ParentCommittees {
+    money_committees: Urls;
+    national_policy_committees: Urls;
+    economic_policy_committees: Urls;
+    special_purpose_committees: Urls;
+    selects_and_commissions: Urls;
+    operation_committees: Urls;
+    uncategorised: Urls;
+}
+
+export interface Issue {
+    id: number;
+    code: string;
+    title_one_word: string;
+    title_short: string;
+    title: string;
+    summary: null | string;
+    created_at: Date;
+    updated_at: Date;
+}
+
+export interface RecentEducation {
     __type: string;
     id: number;
     user_id: number;
@@ -60,19 +128,12 @@ export interface Education {
     minors: null;
     start_year: string;
     end_year: string;
-    source: string;
+    source: null;
     created_at: Date;
     updated_at: Date;
 }
 
-export interface Meta {
-    caucuses_status: boolean;
-    onboarding_feed: boolean;
-    onboarding_events: boolean;
-    onboarding_groups: boolean;
-}
-
-export interface Occupation {
+export interface RecentOccupation {
     id: number;
     user_id: number;
     title: string;
@@ -87,62 +148,4 @@ export interface Occupation {
     committee: null;
     legMember: null;
     legOffice: null;
-}
-
-export interface Person {
-    id: number;
-    party: string;
-    job_type: null;
-    chamber: null;
-    created_at: Date;
-    updated_at: Date;
-    committees: PersonCommittees;
-    issues: Issue[];
-    legMember: null;
-    legOffice: LegOffice;
-}
-
-export interface PersonCommittees {
-    caucuses: any[];
-    committees: CommitteesCommittees;
-}
-
-export interface CommitteesCommittees {
-    parentCommittees: ParentCommittees;
-    subCommittees: any[];
-}
-
-export interface ParentCommittees {
-    money_committees: EconomicPolicyCommittees;
-    national_policy_committees: EconomicPolicyCommittees;
-    economic_policy_committees: EconomicPolicyCommittees;
-    special_purpose_committees: EconomicPolicyCommittees;
-    selects_and_commissions: EconomicPolicyCommittees;
-    operation_committees: EconomicPolicyCommittees;
-    uncategorised: EconomicPolicyCommittees;
-}
-
-export interface EconomicPolicyCommittees {
-}
-
-export interface Issue {
-    id: number;
-    code: string;
-    title_one_word: string;
-    title_short: string;
-    title: string;
-    summary: null | string;
-    created_at: Date;
-    updated_at: Date;
-}
-
-export interface LegOffice {
-    id: number;
-    person_id: number;
-    chamber_id: number;
-    state_code: string;
-    role: string;
-    office_name: string;
-    created_at: Date;
-    updated_at: Date;
 }

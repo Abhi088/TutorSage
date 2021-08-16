@@ -26,7 +26,12 @@ const Users: FC<Props> = (props) => {
             {users.map((user, index) => {
                 return (<div key={user.id}>
                     <LinkTo to={`/users/${user.id}`}>
-                        <UserData className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`} name={user.first_name + " " + user.middle_name + " " + user.last_name} desc={user.__type} imgSrc={user.profile_pic_url}></UserData>
+                        <UserData
+                            className={`${(index % 2 === 0) ? "bg-white" : "bg-gray-100"}`}
+                            name={`${user.first_name} ${user.middle_name ? user.middle_name + " " : ""}${user.last_name ? user.last_name : ""}`}
+                            desc={user.bio}
+                            imgSrc={user.profile_pic_url}
+                        ></UserData>
                     </LinkTo>
                 </div>);
             })}

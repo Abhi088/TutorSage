@@ -20,7 +20,6 @@ export const usersReducer: Reducer<UserState> = (
         case USERS_FETCH:
             const users: User[] = action.payload;
             const usersId = getIds(users);
-            console.log(usersId)
             const newState = addMany(state, users) as UserState;
 
             return {

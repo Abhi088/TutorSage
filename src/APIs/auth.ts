@@ -1,5 +1,5 @@
 import axios from "axios";
-import { User, UserChangeAble } from "../Models/User";
+import { Me, MeChangeAble } from "../Models/Me";
 import { BASE_URL, LS_AUTH_TOKEN } from "../Constants/constants";
 import { axiosRequest, axiosResponse } from "../Axios/axios";
 
@@ -16,7 +16,7 @@ interface LoginResponse {
         is_2fa_enabled: boolean;
     };
     token: string;
-    user: User;
+    user: Me;
 }
 
 export const login = (data: LoginRequest) => {
@@ -35,7 +35,7 @@ export const logout = () => {
 }
 
 interface MeResponse {
-    data: User;
+    data: Me;
 }
 
 export const me = () => {
@@ -44,7 +44,7 @@ export const me = () => {
         .then((response) => response.data.data);
 };
 
-export const updateUser = async (data: UserChangeAble) => {
+export const updateUser = async (data: MeChangeAble) => {
     try {
         const update = await axios.put(`${BASE_URL}/me`, data);
         return update;
