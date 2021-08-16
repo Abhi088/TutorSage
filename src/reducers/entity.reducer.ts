@@ -4,12 +4,35 @@ export interface EntityState<T extends Entity = Entity> {
     byId: {
         [id: number]: T;
     }
+    selectedId?: number;
+    loadingOne: boolean;
+    loadingOneError?: string;
+}
+
+export const initialEntityState = {
+    byId: {},
+    loadingOne: false,
 }
 
 export const getIds = (entities: Entity[]) => entities.map((e) => e.id);;
 
-export const addOne = (state: EntityState, entity: Entity) => {
-    return { ...state, byId: { ...state.byId, [entity.id]: entity } };
+export const select = (state: EntityState, id: number) => ({ ...state, selectedId: id, loadingOne: true, loadingOneError: undefined });
+
+export const setErrorForOne = (state: EntityState, id: number, msg: string) => {
+    if (state.selectedId !== id) {
+        return state;
+    }
+
+    return { ...state, loadingOneError: msg, loadingOne: false };
+}
+
+export const addOne = (state: EntityState, entity: Entity, loading?: boolean) => {
+    const newLoading = loading === undefined ? state.loadingOne : loading;
+    return {
+        ...state,
+        byId: { ...state.byId, [entity.id]: entity },
+        loadingOne: newLoading
+    };
 };
 
 export const addMany = (state: EntityState, entities: Entity[]) => {

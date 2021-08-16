@@ -1,14 +1,14 @@
 import { Reducer } from "redux";
 import { USERS_FETCH, USER_FETCH_ONE } from "../actions/actions.constants";
 import { User } from "../Models/User";
-import { addMany, addOne, EntityState, getIds } from "./entity.reducer";
+import { addMany, addOne, EntityState, getIds, initialEntityState } from "./entity.reducer";
 
 export interface UserState extends EntityState<User> {
     usersId: number[]
 }
 
 const initialState = {
-    byId: {},
+    ...initialEntityState,
     usersId: []
 };
 

@@ -3,12 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
 import DashboardPage from './Dashboard.page';
 import RecordingsPage from './Recordings.page';
-import GroupsPage from './Groups.page';
+import GroupsPage from './Groups/Groups.page';
 import LecturePage from './Lecture.page';
 import Navbar from '../../components/Navbar';
 import { lazy } from "react";
 import { useAppSelector } from '../../store';
-import GroupDetailsPage from './GroupDetails.page';
+import GroupDetailsPage from './Groups/GroupDetails.page';
 import UsersPage from './Users/Users.page';
 import UserDetailsPage from './Users/UserDetails.page';
 

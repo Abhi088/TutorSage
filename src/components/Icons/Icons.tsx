@@ -68,11 +68,16 @@ const Icon: FC<Props> = ({ className, name, onClick }) => {
                 <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
             </svg>
         );
-        case "graph": return (
-            <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
-                <path fillRule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"></path>
+        case "user": return (
+            <svg className={`${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" height="1.75em" width="1.75em" xmlns="http://www.w3.org/2000/svg">
+                <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>
             </svg>
         );
+        // case "graph": return (
+        //     <svg className={`h-7 w-7 ${className}`} stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
+        //         <path fillRule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"></path>
+        //     </svg>
+        // );
         case "logout": return (
             <svg className={`${className}`} stroke="currentColor" fill="none" strokeWidth="0" viewBox="0 0 24 24" height="1.75em" width="1.75em" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">

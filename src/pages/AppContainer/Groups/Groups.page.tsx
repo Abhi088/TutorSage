@@ -1,12 +1,12 @@
 import { FC, memo, useEffect } from 'react';
-import GroupData from '../../components/GroupData';
-import { groupLoadingSelector, groupQuerySelector, groupsFetchSelector } from '../../selectors/groups.selectors';
-import { useAppSelector } from '../../store';
+import GroupData from '../../../components/GroupData';
+import { groupLoadingSelector, groupQuerySelector, groupsFetchSelector } from '../../../selectors/groups.selectors';
+import { useAppSelector } from '../../../store';
 import { useDispatch } from 'react-redux';
-import { groupsQueryAction } from '../../actions/groups.actions';
-import Spinner from '../../components/Spinner/Spinner';
-import { pathActions } from '../../actions/path.actions';
-import LinkTo from '../../components/LinkTo';
+import { groupsQueryAction } from '../../../actions/groups.actions';
+import Spinner from '../../../components/Spinner/Spinner';
+import { pathActions } from '../../../actions/path.actions';
+import LinkTo from '../../../components/LinkTo';
 
 interface Props { }
 
