@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { groupQueryOneAction } from '../../../actions/groups.actions';
 import LinkTo from '../../../components/LinkTo';
 import Spinner from '../../../components/Spinner/Spinner';
-import { loadingOneErrorSelector, loadingOneSelector, selectedGroupSelector } from '../../../selectors/groups.selectors';
+import { groupLoadingOneErrorSelector, groupLoadingOneSelector, selectedGroupSelector } from '../../../selectors/groups.selectors';
 import { useAppSelector } from '../../../store';
 
 interface Props { }
@@ -14,8 +14,8 @@ const GroupDetails: FC<Props> = (props) => {
     const groupId = +useParams<{ groupId: string }>().groupId;
 
     const group = useAppSelector(selectedGroupSelector);
-    const error = useAppSelector(loadingOneErrorSelector);
-    const loading = useAppSelector(loadingOneSelector);
+    const error = useAppSelector(groupLoadingOneErrorSelector);
+    const loading = useAppSelector(groupLoadingOneSelector);
     console.log(loading);
 
     const dispatch = useDispatch();

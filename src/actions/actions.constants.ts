@@ -14,6 +14,7 @@ export const USERS_QUERY = "users/query";
 export const USERS_FETCH = "users/fetch";
 export const USER_QUERY_ONE = "user/query_one";
 export const USER_FETCH_ONE = "user/fetch_one";
+export const USER_FETCH_ONE_ERROR = "user/fetch_one_error";
 
 //path
 export const SET_PATH = "path/set";

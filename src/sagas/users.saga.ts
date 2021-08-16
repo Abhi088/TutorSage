@@ -1,7 +1,7 @@
 import { takeEvery, takeLatest, call, put, delay } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
 import { USERS_QUERY, USER_QUERY_ONE } from "../actions/actions.constants";
-import { userFetchOneAction, usersFetchAction } from "../actions/users.action";
+import { userFetchOneAction, userFetchOneError, usersFetchAction } from "../actions/users.action";
 import { fetchOneUser, fetchUsers } from "../APIs/users";
 
 function* usersFetch(action: AnyAction): Generator<any> {
@@ -11,8 +11,13 @@ function* usersFetch(action: AnyAction): Generator<any> {
 }
 
 function* userFetchOne(action: AnyAction): Generator<any> {
-    const userResponse: any = yield call(fetchOneUser, action.payload);
-    yield put(userFetchOneAction(userResponse.data.data));
+    try {
+        const userResponse: any = yield call(fetchOneUser, action.payload);
+        yield put(userFetchOneAction(userResponse.data.data));
+    } catch (e) {
+        const error = e.response.data?.message || "Some Error Occured";
+        yield put(userFetchOneError(action.payload, error));
+    }
 }
 
 export function* watchUserQueryChanged() {

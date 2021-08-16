@@ -6,12 +6,14 @@ export interface EntityState<T extends Entity = Entity> {
     }
     selectedId?: number;
     loadingOne: boolean;
+    loadingList: boolean;
     loadingOneError?: string;
 }
 
 export const initialEntityState = {
     byId: {},
     loadingOne: false,
+    loadingList: false
 }
 
 export const getIds = (entities: Entity[]) => entities.map((e) => e.id);;

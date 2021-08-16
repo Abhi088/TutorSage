@@ -1,6 +1,6 @@
 import { FC, memo, useEffect } from 'react';
 import GroupData from '../../../components/GroupData';
-import { groupLoadingSelector, groupQuerySelector, groupsFetchSelector } from '../../../selectors/groups.selectors';
+import { groupLoadingListSelector, groupQuerySelector, groupsFetchSelector } from '../../../selectors/groups.selectors';
 import { useAppSelector } from '../../../store';
 import { useDispatch } from 'react-redux';
 import { groupsQueryAction } from '../../../actions/groups.actions';
@@ -17,7 +17,7 @@ const Groups: FC<Props> = (props) => {
 
     const query = useAppSelector(groupQuerySelector);
 
-    const loading = useAppSelector(groupLoadingSelector);
+    const loading = useAppSelector(groupLoadingListSelector);
 
     const groups = useAppSelector(groupsFetchSelector);
     const dispatch = useDispatch();

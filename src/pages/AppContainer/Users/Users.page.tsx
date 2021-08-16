@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { pathActions } from "../../../actions/path.actions";
 import { usersQueryAction } from "../../../actions/users.action";
 import LinkTo from "../../../components/LinkTo";
+import Spinner from "../../../components/Spinner/Spinner";
 import UserData from "../../../components/UserData";
-import { usersFetchSelector } from "../../../selectors/users.selector";
+import { usersFetchSelector, usersLoadingListSelector } from "../../../selectors/users.selector";
 import { useAppSelector } from "../../../store";
 
 interface Props { }
@@ -16,6 +17,7 @@ const Users: FC<Props> = (props) => {
     const dispatch = useDispatch();
 
     const users = useAppSelector(usersFetchSelector);
+    const loading = useAppSelector(usersLoadingListSelector);
 
     useEffect(() => {
         dispatch(usersQueryAction());
@@ -23,6 +25,7 @@ const Users: FC<Props> = (props) => {
 
     return (
         <div>
+            {loading && <Spinner />}
             {users.map((user, index) => {
                 return (<div key={user.id}>
                     <LinkTo to={`/users/${user.id}`}>
