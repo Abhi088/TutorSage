@@ -7,7 +7,6 @@ import InputField from '../../components/InputField/InputField';
 import Icon from '../../components/Icons/Icons';
 import Button from '../../components/Button/Button';
 import FormSwitch from '../../components/FormSwitch';
-// import { login } from '../../APIs/auth';
 import { useDispatch } from 'react-redux';
 import { meLoginAction } from '../../actions/auth.actions';
 
@@ -19,7 +18,6 @@ const Login: FC<Props> = (props) => {
     const dispatch = useDispatch();
 
     const { handleSubmit, errors, touched, isSubmitting, getFieldProps } =
-        // const { handleSubmit, errors, touched, getFieldProps, isValid } =
         useFormik({
             initialValues: {
                 email: "",
@@ -35,10 +33,6 @@ const Login: FC<Props> = (props) => {
                     .required("Cannot login without a password")
             }),
             onSubmit: (data) => {
-                // login(data).then((u) => {
-                //     dispatch(meLogin(u));
-                //     redirectHistory.push("/dashboard");
-                // });
                 dispatch(meLoginAction(data));
             }
         });

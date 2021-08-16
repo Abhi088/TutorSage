@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { CANCEL } from "redux-saga";
-// import { CANCEL } from "redux-saga";
 import { LS_AUTH_TOKEN } from "../Constants/constants";
 
 export const axiosRequest = () => {

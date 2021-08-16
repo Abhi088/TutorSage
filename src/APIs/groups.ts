@@ -21,8 +21,6 @@ export const fetchGroups = (data: GroupRequest) => {
     const url = BASE_URL + "/groups";
 
     return get<GroupResponse>(url, { params: data });
-    // .then((response) => { return response.data.data })
-    // .catch((e) => console.log(e));
 }
 
 export const fetchOneGroup = (id: string) => {

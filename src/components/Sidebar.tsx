@@ -1,16 +1,12 @@
 import { FC, memo } from 'react';
 import { logout } from '../APIs/auth';
 import SidebarButton from './SidebarButton';
-// import { meSelector } from '../selectors/user.selectors';
-// import { useAppSelector } from '../store';
 
 interface Props {
     isVisible: boolean;
 }
 
 const Sidebar: FC<Props> = ({ isVisible }) => {
-
-    // const user = useAppSelector(meSelector);
 
     return (
         <div className={`bg-gray-100 w-72 ${(isVisible) ? "" : "hidden"} p-3`}>
