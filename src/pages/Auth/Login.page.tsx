@@ -1,5 +1,4 @@
 import { FC, memo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from "yup";
 import Copyrights from '../../components/Copyrights';
@@ -8,15 +7,16 @@ import InputField from '../../components/InputField/InputField';
 import Icon from '../../components/Icons/Icons';
 import Button from '../../components/Button/Button';
 import FormSwitch from '../../components/FormSwitch';
-import { login } from '../../APIs/auth';
-import { authActions } from '../../actions/auth.actions';
+// import { login } from '../../APIs/auth';
+import { useDispatch } from 'react-redux';
+import { meLogin } from '../../actions/auth.actions';
 
 interface Props {
 }
 
 const Login: FC<Props> = (props) => {
 
-    const redirectHistory = useHistory();
+    const dispatch = useDispatch();
 
     const { handleSubmit, errors, touched, isSubmitting, getFieldProps } =
         // const { handleSubmit, errors, touched, getFieldProps, isValid } =
@@ -35,10 +35,11 @@ const Login: FC<Props> = (props) => {
                     .required("Cannot login without a password")
             }),
             onSubmit: (data) => {
-                login(data).then((u) => {
-                    authActions.login(u);
-                    redirectHistory.push("/dashboard");
-                });
+                // login(data).then((u) => {
+                //     dispatch(meLogin(u));
+                //     redirectHistory.push("/dashboard");
+                // });
+                dispatch(meLogin(data));
             }
         });
 

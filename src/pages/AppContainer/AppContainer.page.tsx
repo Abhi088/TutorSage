@@ -19,7 +19,7 @@ interface Props {
 
 const AppContainer: FC<Props> = (props) => {
 
-    const user = useAppSelector((state) => state.me.byId[state.auth.id!]);
+    const user = useAppSelector((state) => state.auth.byId[state.auth.id!]);
     const [showSidebar, setShowSidebar] = useState(true);
 
     return (

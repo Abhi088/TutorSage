@@ -6,9 +6,10 @@ import AuthLazy from './pages/Auth/Auth.lazy';
 import NotFoundPage from './pages/NotFound.page';
 import { me } from './APIs/auth';
 import { useAppSelector } from './store';
-import { meSelector } from './selectors/me.selectors';
+import { meSelector } from './selectors/auth.selectors';
 import Spinner from './components/Spinner/Spinner';
-import { authActions } from './actions/auth.actions';
+import { useDispatch } from 'react-redux';
+import { meFetch } from './actions/auth.actions';
 
 interface Props { }
 
@@ -17,11 +18,12 @@ const App: FC<Props> = () => {
   const user = useAppSelector(meSelector);
 
   const token = localStorage.getItem(LS_AUTH_TOKEN);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!token) return;
 
-    me().then((u) => authActions.fetch(u));
+    me().then((u) => dispatch(meFetch(u.data.data)));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!user && token) {

@@ -1,21 +1,29 @@
 import { Reducer } from "redux";
 import { ME_FETCH, ME_LOGIN } from "../actions/actions.constants";
+import { Me } from "../Models/Me";
+import { addOne, EntityState, initialEntityState } from "./entity.reducer";
 
-export interface AuthState {
+export interface AuthState extends EntityState<Me> {
     id?: number;
 }
 
-const initialState = {}
+const initialState = {
+    ...initialEntityState
+}
 
 export const authReducer: Reducer<AuthState> = (
     state = initialState,
     action
 ) => {
     switch (action.type) {
-        case ME_LOGIN:
+        case ME_LOGIN: return state;
         case ME_FETCH:
             const userId = action.payload.id as number;
-            return { ...state, id: userId };
+            const newState = addOne(state, action.payload) as AuthState;
+            return {
+                ...newState,
+                id: userId
+            };
         default:
             return state;
     }

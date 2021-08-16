@@ -1,6 +1,5 @@
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import { meReducer } from "./reducers/me.reducer";
 import { groupsReducer } from "./reducers/groups.reducer";
 import { authReducer } from "./reducers/auth.reducer";
 import { pathReducer } from "./reducers/path.reducer";
@@ -9,9 +8,9 @@ import { sagaMiddleware } from "./sagas";
 import { watchGroupQueryChanged } from "./sagas/groups.sagas";
 import { usersReducer } from "./reducers/users.reducer";
 import { watchUserQueryChanged } from "./sagas/users.saga";
+import { watchMeLogin } from "./sagas/auth.sagas";
 
 const reducer = combineReducers({
-    me: meReducer,
     users: usersReducer,
     groups: groupsReducer,
     auth: authReducer,
@@ -27,6 +26,7 @@ export const store = createStore(
 
 sagaMiddleware.run(watchGroupQueryChanged);
 sagaMiddleware.run(watchUserQueryChanged);
+sagaMiddleware.run(watchMeLogin);
 
 export type AppState = ReturnType<typeof store.getState>;
 
