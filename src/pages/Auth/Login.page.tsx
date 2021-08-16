@@ -9,7 +9,7 @@ import Button from '../../components/Button/Button';
 import FormSwitch from '../../components/FormSwitch';
 // import { login } from '../../APIs/auth';
 import { useDispatch } from 'react-redux';
-import { meLogin } from '../../actions/auth.actions';
+import { meLoginAction } from '../../actions/auth.actions';
 
 interface Props {
 }
@@ -39,7 +39,7 @@ const Login: FC<Props> = (props) => {
                 //     dispatch(meLogin(u));
                 //     redirectHistory.push("/dashboard");
                 // });
-                dispatch(meLogin(data));
+                dispatch(meLoginAction(data));
             }
         });
 

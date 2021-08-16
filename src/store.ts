@@ -8,7 +8,7 @@ import { sagaMiddleware } from "./sagas";
 import { watchGroupQueryChanged } from "./sagas/groups.sagas";
 import { usersReducer } from "./reducers/users.reducer";
 import { watchUserQueryChanged } from "./sagas/users.saga";
-import { watchMeLogin } from "./sagas/auth.sagas";
+import { watchMeAuth } from "./sagas/auth.sagas";
 
 const reducer = combineReducers({
     users: usersReducer,
@@ -26,7 +26,7 @@ export const store = createStore(
 
 sagaMiddleware.run(watchGroupQueryChanged);
 sagaMiddleware.run(watchUserQueryChanged);
-sagaMiddleware.run(watchMeLogin);
+sagaMiddleware.run(watchMeAuth);
 
 export type AppState = ReturnType<typeof store.getState>;
 
