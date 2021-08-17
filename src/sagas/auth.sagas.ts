@@ -1,4 +1,4 @@
-import { takeEvery, call, put } from "@redux-saga/core/effects";
+import { all, takeEvery, call, put } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
 import { ME_AUTH_CHECK, ME_LOGIN, ME_UPDATE } from "../actions/actions.constants";
 import { meFetchAction } from "../actions/auth.actions";
@@ -23,7 +23,9 @@ function* meUpdate(action: AnyAction): Generator<any> {
 }
 
 export function* watchMeAuth() {
-    yield takeEvery(ME_LOGIN, meLogin);
-    yield takeEvery(ME_AUTH_CHECK, meAuthCheck);
-    yield takeEvery(ME_UPDATE, meUpdate);
+    yield all([
+        takeEvery(ME_LOGIN, meLogin),
+        takeEvery(ME_AUTH_CHECK, meAuthCheck),
+        takeEvery(ME_UPDATE, meUpdate)
+    ]);
 }

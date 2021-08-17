@@ -2,6 +2,7 @@ import { FC, memo, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { groupQueryOneAction } from '../../../actions/groups.actions';
+import Avatar from '../../../components/Avatar/Avatar';
 import LinkTo from '../../../components/LinkTo';
 import Spinner from '../../../components/Spinner/Spinner';
 import { groupLoadingOneErrorSelector, groupLoadingOneSelector, selectedGroupSelector } from '../../../selectors/groups.selectors';
@@ -34,8 +35,11 @@ const GroupDetails: FC<Props> = (props) => {
     return (
         <div>
             {loading && <Spinner type="button" />}
-            {group && <div>Group {group.name}</div>}
+            {group && <div>GroupName: {group.name}
+                <br /><br />Description: {group.description}
+                <br /><br /><Avatar imgSrc={group.group_image_url} showStatus={false}></Avatar></div>}
             <LinkTo to={`/groups/${groupId + 1}`}>Next Group</LinkTo>
+            <br /> i have yet not done the styling on website
         </div>
     );
 };

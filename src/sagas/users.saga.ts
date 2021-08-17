@@ -1,4 +1,4 @@
-import { takeEvery, takeLatest, call, put, delay } from "@redux-saga/core/effects";
+import { all, takeEvery, takeLatest, call, put, delay } from "@redux-saga/core/effects";
 import { AnyAction } from "redux";
 import { USERS_QUERY, USER_QUERY_ONE } from "../actions/actions.constants";
 import { userFetchOneAction, userFetchOneError, usersFetchAction } from "../actions/users.action";
@@ -21,6 +21,8 @@ function* userFetchOne(action: AnyAction): Generator<any> {
 }
 
 export function* watchUserQueryChanged() {
-    yield takeLatest(USERS_QUERY, usersFetch);
-    yield takeEvery(USER_QUERY_ONE, userFetchOne);
+    yield all([
+        takeLatest(USERS_QUERY, usersFetch),
+        takeEvery(USER_QUERY_ONE, userFetchOne)
+    ]);
 }

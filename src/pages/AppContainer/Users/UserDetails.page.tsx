@@ -3,6 +3,7 @@ import { FC, memo } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { userQueryOneAction } from "../../../actions/users.action";
+import Avatar from "../../../components/Avatar/Avatar";
 import LinkTo from "../../../components/LinkTo";
 import Spinner from "../../../components/Spinner/Spinner";
 import { selectedUserSelector, userLoadingOneErrorSelector, userLoadingOneSelector } from "../../../selectors/users.selector";
@@ -35,8 +36,10 @@ const UserDetails: FC<Props> = (props) => {
     return (
         <div className="mx-auto flex flex-col space-y-10 items-center appContainer_min_height">
             {loading && <Spinner type="button" />}
-            {user && <div>{user.first_name}</div>}
+            {user && <div>{user.first_name}
+                <br /><br />Bio: {user.bio}<br /><br /><Avatar imgSrc={user.profile_pic_url}></Avatar></div>}
             <LinkTo to={`/users/${userId + 1}`}>Next User</LinkTo>
+            <br /> i have yet not done the styling on website
         </div>
     );
 };
